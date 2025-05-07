@@ -1,0 +1,70 @@
+/* ---------- Formulario Styles ---------- */
+
+/* Labels subrayados en verde */
+.login-label {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #0f0;
+  }
+  
+  /* Inputs: solo línea inferior */
+  /* Inputs: caja con borde plomo + foco fosforescente */
+.login-input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #666;             /* borde plomo */
+    border-radius: 4px;
+    padding: 0.75rem;                    /* un poco más de padding */
+    color: #fff;                         /* texto blanco sobre verde */
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .login-input:focus {
+    outline: none;
+    border-color: #0f0;                  /* borde verde vivo */
+    box-shadow: 0 0 8px rgba(0,255,0,0.7);/* glow fosforescente */
+  }
+  
+  
+  /* Error en rojo */
+  .login-error {
+    color: #ff4444;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Botón negro con texto verde */
+  .login-button {
+    width: 100%;
+    padding: 0.75rem;
+    background: #000;
+    color: #0f0;
+    border: 2px solid #0f0;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+  }
+  .login-button:hover {
+    background: #0f0;
+    color: #000;
+    transform: scale(1.05);
+  }
+  
+  /* Texto de signup */
+  .signup-text {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #aaa;
+    text-align: center;
+  }
+  .signup-text a {
+    color: #0f0;
+    text-decoration: none;
+  }
+  .signup-text a:hover {
+    text-decoration: underline;
+  }
+  

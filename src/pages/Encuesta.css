@@ -1,0 +1,63 @@
+/* Contenedor full-screen y centrado */
+.encuesta-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;       /* ocupar todo el ancho */
+    height: 100vh;
+    background: #000;
+    padding: 1rem;      /* opcional, para respirar en móvil */
+  }
+  
+  /* Card con borde y sombra verdes */
+  .encuesta-card {
+    width: 90%;
+    max-width: 600px;   /* límite de ancho */
+    background: #111;
+    border: 2px solid #0f0;
+    box-shadow: 0 0 20px rgba(0,255,0,0.4);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Header oscuro */
+  .encuesta-header {
+    background: black;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  /* Título neon verde */
+  .encuesta-title {
+    margin: 0;
+    color: #0f0;
+    font-size: 1.75rem;
+    text-shadow: 0 0 8px rgba(0,255,0,0.7);
+  }
+  
+  /* Body del form: centra horizontalmente el formulario */
+  .encuesta-body {
+    padding: 2rem 1.5rem;
+    background: #111;
+    display: flex;
+    justify-content: center;  /* <— centra el form aquí */
+  }
+  
+  /* Responsive: ajustar paddings y tamaños */
+  @media (max-width: 768px) {
+    .encuesta-body {
+      padding: 1.5rem 1rem;
+    }
+    .encuesta-title {
+      font-size: 1.5rem;
+    }
+  }
+  @media (max-width: 480px) {
+    .encuesta-body {
+      padding: 1rem;
+    }
+    .encuesta-title {
+      font-size: 1.25rem;
+    }
+  }
+  

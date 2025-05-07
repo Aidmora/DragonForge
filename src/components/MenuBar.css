@@ -1,0 +1,74 @@
+/* Variables globales (puedes moverlas a index.css si ya las tienes) */
+:root {
+    --header-height: 100px;
+    --nav-height:    60px;
+    --color-bg-alt:  #1f1f1f;
+    --color-primary: #5EFF00;
+    --color-text:    #E0E0E0;
+    --color-text-inv:#000000;
+    --font-body:     'Share Tech Mono', monospace;
+  }
+  
+  /* —— Header fijo —— */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-height);
+    background: var(--color-bg-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(127, 221, 20, 0.5);
+  }
+  .site-header .logo {
+    max-height: calc(var(--header-height) - 20px);
+    width: auto;
+  }
+  
+  /* —— Nav sticky justo debajo del header —— */
+  .site-nav {
+    width: 100%;
+    position: fixed;
+    top: var(--header-height);
+    left: 0; right: 0;
+    background: var(--color-bg-alt);
+    z-index: 999;
+  }
+  
+  /* —— Lista de enlaces centrada y a todo ancho —— */
+  .barra-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    list-style: none;
+    white-space: nowrap;
+    font-family: var(--font-body);
+  }
+  .barra-nav li {
+    margin: 0 0.5rem;
+  }
+  .barra-nav a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--color-text);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .barra-nav a:hover,
+  .barra-nav .active {
+    background: var(--color-primary);
+    color: var(--color-text-inv);
+    box-shadow: 0 0 8px var(--color-primary);
+    transform: scale(1.05);
+    border-radius: 4px;
+  }
+  

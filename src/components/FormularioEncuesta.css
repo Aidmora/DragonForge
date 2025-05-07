@@ -1,0 +1,99 @@
+.encuesta-form {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+  }
+  
+  /* Cada campo con margen */
+  .encuesta-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Etiquetas verdes */
+  .encuesta-group label {
+    color: #0f0;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Toggle de género */
+  .gender-toggle {
+    display: flex;
+    border: 1px solid #666;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .gender-toggle button {
+    flex: 1;
+    padding: 0.5rem;
+    background: #222;
+    color: #ccc;
+    border: 0;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .gender-toggle button.active {
+    background: #0f0;
+    color: #000;
+  }
+  .gender-toggle button:hover:not(.active) {
+    background: #333;
+  }
+  
+  /* Inputs de texto/fecha */
+  .encuesta-form input[type="date"],
+  .encuesta-form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    background: #222;
+    border: 1px solid #666;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .encuesta-form input:focus {
+    outline: none;
+    border-color: #0f0;
+    box-shadow: 0 0 6px rgba(0,255,0,0.5);
+  }
+  
+  /* Inputs con unidad (cm, kg) */
+  .input-with-unit {
+    position: relative;
+  }
+  .input-with-unit span {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+  }
+  
+  /* Botón NEXT */
+  .encuesta-next {
+    padding: 0.75rem;
+    background: #000;
+    color: #0f0;
+    border: 2px solid #0f0;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  }
+  .encuesta-next:hover {
+    background: #0f0;
+    color: #000;
+    transform: scale(1.03);
+    box-shadow: 0 0 8px rgba(0,255,0,0.6);
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .encuesta-next {
+      font-size: 0.9rem;
+    }
+  }
+  
