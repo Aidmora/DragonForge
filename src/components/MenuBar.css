@@ -1,4 +1,3 @@
-/* Variables globales (puedes moverlas a index.css si ya las tienes) */
 :root {
     --header-height: 100px;
     --nav-height:    60px;
@@ -8,8 +7,6 @@
     --color-text-inv:#000000;
     --font-body:     'Share Tech Mono', monospace;
   }
-  
-  /* —— Header fijo —— */
   .site-header {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -25,8 +22,6 @@
     max-height: calc(var(--header-height) - 20px);
     width: auto;
   }
-  
-  /* —— Nav sticky justo debajo del header —— */
   .site-nav {
     width: 100%;
     position: fixed;
@@ -36,7 +31,6 @@
     z-index: 999;
   }
   
-  /* —— Lista de enlaces centrada y a todo ancho —— */
   .barra-nav {
     display: flex;
     justify-content: center;
@@ -71,4 +65,41 @@
     transform: scale(1.05);
     border-radius: 4px;
   }
-  
+  @media (max-width: 768px) {
+    .site-nav {
+      position: static;
+      height: auto;
+      overflow: visible;
+      background-color: #333;
+    }
+    .barra-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0;
+    }
+    .barra-nav li {
+      width: 100%;
+      text-align: center;
+    }
+    .barra-nav a {
+      padding: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .barra-nav li:first-child a {
+      border-top: none;
+    }
+  }
+  @media (max-width: 690px) {
+    .site-nav {
+      position: sticky;
+      margin-top: var(--header-height);
+      width: 100%;
+      overflow: visible;
+      background-color: #333;
+    }
+      .barra-nav a {
+        padding: 0.5rem 0.7rem;   
+        font-size: 0.7rem;      
+      }
+  }

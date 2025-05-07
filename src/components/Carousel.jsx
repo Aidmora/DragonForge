@@ -10,18 +10,31 @@ export default function Carousel() {
   const prev = () => setCurrent(c => (c - 1 + len) % len)
   const next = () => setCurrent(c => (c + 1) % len)
 
-  const bgImage = data[current].img
+  // slide activo = bench de fondo
+  const active = data[current]
 
   return (
     <div
       className="carousel"
-      style={{ backgroundImage: `url(${bgImage})` }}
+      style={{
+        backgroundImage: `url(${active.img})`
+      }}
     >
+      <div className="main-content">
+        <h2>{active.titulo}</h2>
+        <p className="name">{active.nombre}</p>
+        <p className="desc">{active.descripcion}</p>
+        {active.link && (
+          <a className="btn" href={active.link}>
+            Ver más
+          </a>
+        )}
+      </div>
+
       <div className="list">
         {data.map((item, idx) => {
           const pos = (idx - current + len) % len
-          // omitimos el fondo activo
-          if (pos === 0) return null
+          if (pos === 0) return null  
           return <CarouselItem key={idx} item={item} pos={pos} />
         })}
       </div>
