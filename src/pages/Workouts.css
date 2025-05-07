@@ -1,55 +1,33 @@
-/* src/pages/WorkoutsPage.css */
-
-/* —— Variables globales —— */
 :root {
-    --header-height: 100px;
-    --nav-height:    60px;
-    --color-bg-dark: #141414;
-    --color-bg-alt:  #1f1f1f;
-    --color-text:    #E0E0E0;
-  }
-  
-  /* —— Contenedor principal full-height —— */
-  .page-container {
-    display: flex;
-    width: 100vw;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  /* —— Main full-width background —— */
-  .site-main {
-    flex: 1;
-    width: 100%;
-    background: var(--color-bg-dark);
-    color: var(--color-text);
-    /* espaciado para no quedar debajo de header+nav */
-    padding-top: calc(var(--header-height) + var(--nav-height) + 1rem);
-    box-sizing: border-box;
-  }
-  
-  /* —— Wrapper centrado dentro del main —— */
-  .site-main .content-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  /* —— Footer full-width background —— */
-  .site-footer {
-    width: 100%;
-    background: var(--color-bg-alt);
-    color: var(--color-text);
-    box-sizing: border-box;
-  }
-  
-  /* —— Wrapper centrado dentro del footer —— */
-  .site-footer .content-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: clamp(0.5rem, 2vw, 1rem);
-  }
-  
+  --header-h: 100px;
+  --nav-h:    60px;
+  --bg-dark:  #141414;
+  --bg-alt:   #1f1f1f;
+  --text:     #E0E0E0;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-main {
+  width: 100vw;
+  flex: 1;
+  background: var(--bg-dark);
+  padding-top: calc(var(--header-h) + var(--nav-h) + 1rem);
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-footer {
+  background: var(--bg-alt);
+  color: var(--text);
+  text-align: center;
+  padding: 1rem;
+}
