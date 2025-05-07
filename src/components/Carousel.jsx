@@ -10,7 +10,6 @@ export default function Carousel() {
   const prev = () => setCurrent(c => (c - 1 + len) % len)
   const next = () => setCurrent(c => (c + 1) % len)
 
-  // slide activo = bench de fondo
   const active = data[current]
 
   return (

@@ -25,13 +25,13 @@ export default function LoginPage() {
       <div className="login-content">
         {/* Columna de imagen */}
         <div className="login-image-wrapper">
-          <h2 className="image-title">Get Your FitForge</h2>
+          {/*<h2 className="image-title">Get Your DragonForge</h2> */}
           <img src={fitnessImage} alt="Fitness" className="login-image" />
         </div>
 
         {/* Columna de formulario */}
         <div className="login-form-wrapper">
-          <h2 className="form-title">Log in to FitForge</h2>
+          <h2 className="form-title">Log in to DragonForge</h2>
           <FormularioLogin
             email={email}
             password={password}
