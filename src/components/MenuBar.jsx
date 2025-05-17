@@ -1,15 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './MenuBar.css';
-import logo from '../assets/DragonForge4.png';
+import logo from '../assets/DragonForge.png';
 
 export default function MenuBar() {
   return (
     <>
       <header className="site-header">
-        <img src={logo} alt="Dragon Forge" className="logo" />
-      </header>
-      <nav className="site-nav">
+        <nav className="site-nav">
+          <img src={logo} alt="Dragon Forge" className="logo" />
         <ul className="barra-nav">
           <li>
             <NavLink to="/misRutinas"    className={({isActive})=> isActive ? 'active' : ''}>
@@ -23,7 +22,7 @@ export default function MenuBar() {
           </li>
           <li>
             <NavLink to="/workouts"      className={({isActive})=> isActive ? 'active' : ''}>
-              Entrenamientos
+              Rutinas 
             </NavLink>
           </li>
           <li>
@@ -38,6 +37,8 @@ export default function MenuBar() {
           </li>
         </ul>
       </nav>
+      </header>
+      
     </>
   );
 }

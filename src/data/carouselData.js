@@ -1,5 +1,5 @@
-import rutina1 from '../assets/hipT.jpg'
-import rutina2 from '../assets/pecho.jpg'
+import rutina1 from '../assets/hipT.jpeg'
+import rutina2 from '../assets/pecho.png'
 import rutina3 from '../assets/pierna.jpg'
 import rutina4 from '../assets/espalda.jpg'
 import rutina5 from '../assets/hombro.jpeg'

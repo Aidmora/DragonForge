@@ -13,16 +13,17 @@
 }
 
 .site-main {
-  width: 100vw;
   flex: 1;
   background: var(--bg-dark);
   padding-top: calc(var(--header-h) + var(--nav-h) + 1rem);
 }
+footer{
+    width: 100vw;
+    height: 200px;
+}
 
 .content-wrapper {
-  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 1rem;
 }
 
 .site-footer {

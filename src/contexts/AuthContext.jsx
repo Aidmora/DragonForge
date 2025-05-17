@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
         console.log('✅ Profile loaded:', profile);
         setUser(profile);
       } catch (err) {
-        console.error('❌ Bootstrap failed, logging out', err);
+        console.error(' Bootstrap failed, logging out', err);
         logout();
       } finally {
         setLoading(false);

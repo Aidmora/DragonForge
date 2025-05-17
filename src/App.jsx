@@ -15,19 +15,19 @@ function App() {
   return (
     <Routes>
           {/* rutas públicas */}
-          <Route path="/login"       element={<LoginPage/>} />
+          <Route path="/workouts"       element={<WorkoutsPage/>} />
 
           {/* rutas protegidas */}
           <Route path="/misFavoritos" element={<Protected><MisFavoritos /></Protected>} />
           <Route path="/misRutinas"  element={<Protected><MisRutinas /></Protected>} />
-          <Route path="/workouts"    element={<Protected><WorkoutsPage /></Protected>} />
+          {/* <Route path="/workouts"    element={<Protected><WorkoutsPage /></Protected>} /> */}
           <Route path="/encuesta"    element={<Protected><Encuesta /></Protected>} />
           <Route path="/exercises"   element={<Protected><ExercisesPage /></Protected>} />
           <Route path="/profile"     element={<Protected><ProfilePage /></Protected>} />
           <Route path="/settings"    element={<Protected><SettingsPage /></Protected>} />
 
           {/* fallback */}
-          <Route path="*"             element={<Navigate to="/login" replace />} />
+          <Route path="*"             element={<Navigate to="/workouts" replace />} />
       </Routes>
   );
 }

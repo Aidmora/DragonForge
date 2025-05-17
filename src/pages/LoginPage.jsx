@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import FormularioLogin from '../components/FormularioLogin';
 import './LoginStyles.css';
-import fitnessImage from '../assets/DragonForge4.png'
+import fitnessImage from '../assets/DragonForge.png'
 
 export default function LoginPage() {
   const [email, setEmail]       = useState('');

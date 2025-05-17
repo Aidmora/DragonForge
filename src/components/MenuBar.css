@@ -1,6 +1,6 @@
 :root {
-    --header-height: 100px;
-    --nav-height:    60px;
+    --header-height: 110px;
+    --nav-height:    80px;
     --color-bg-alt:  #1f1f1f;
     --color-primary: #5EFF00;
     --color-text:    #E0E0E0;
@@ -16,17 +16,21 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(127, 221, 20, 0.5);
+    animation: fadeMenu 4s ease-out infinite;
   }
-  .site-header .logo {
+  .site-header .site-nav .logo {
     max-height: calc(var(--header-height) - 20px);
     width: auto;
+    margin-left:10% ;
+    top: var(--nav-height);
+    position:relative;
+    margin-right: auto;
   }
-  .site-nav {
+  header .site-nav {
     width: 100%;
     position: fixed;
-    top: var(--header-height);
     left: 0; right: 0;
+    margin-bottom:5%;
     background: var(--color-bg-alt);
     z-index: 999;
   }
@@ -64,6 +68,17 @@
     box-shadow: 0 0 8px var(--color-primary);
     transform: scale(1.05);
     border-radius: 4px;
+  }
+  @keyframes fadeMenu {
+    0% {
+      box-shadow: 0 3px 10px rgba(248, 11, 11, 0.5);
+    }
+    50% {
+      box-shadow: 0 5px 10px rgba(127, 221, 20, 0.5);
+    }
+    100% {
+      box-shadow: 0 7px 10px rgba(231, 34, 16, 0.5);
+    }
   }
   @media (max-width: 768px) {
     .site-nav {
