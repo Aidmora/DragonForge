@@ -1,0 +1,93 @@
+:root{
+    --ff-main: 'Montserrat', sans-serif;
+}
+.card2 {
+    position: relative;
+    width: 390px;
+    height: 454px;
+    background-color:black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+    gap: 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #000000;
+    left: 30%;
+    margin-top: 15%;
+    box-shadow: 0 0 5px#5EFF00,
+              0 0 15px#5EFF00,
+              0 0 20px#5EFF00,
+              0 0 50px#5EFF00;
+}
+.card2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: -5px;
+    margin: auto;
+    width: 400px;
+    height: 564px;
+    border-radius: 15px;
+    background: linear-gradient(-45deg, #000000 0%, #040000 100%);
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card2::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #000000 0%, #000000e6 100%);
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(40px);
+}
+
+.heading {
+    font-size: 10rem;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 50%;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.card2 p {
+    font-size: 20px;
+    color: white;
+}
+
+/* .card p:not::after {
+    font-size: 0px;
+    color: #ffffff;
+}
+
+.card p:last-child {
+    color: #ffffff;
+} */
+
+.card2:hover::after {
+    filter: blur(50px);
+    
+}
+
+.card2:hover::before {
+  background-image: url('../assets/DragonForge.png'),
+                    linear-gradient(-45deg, #000000 0%, #11141e 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center center, center center;
+  background-size: cover, cover;
+  transform: none; 
+  z-index: -2;
+}
+.card2:hover {
+    transform: scale(1);
+    
+}
+.card2:hover .heading {
+  opacity: 0;                 /* lo hace transparente */
+  transition: opacity 0.3s;   /* animación suave */
+}
