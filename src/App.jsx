@@ -3,25 +3,25 @@ import {Routes, Route, Navigate } from 'react-router-dom';
 import Protected from './components/Protected';
 
 import LoginPage      from './pages/LoginPage';
-import WorkoutsPage   from './pages/WorkoutsPage';
+import RutinasPage   from './pages/RutinasPage';
 import ExercisesPage  from './pages/ExercisesPage';
 import ProfilePage    from './pages/ProfilePage';
-import Encuesta       from   './pages/Encuesta'; 
 import SettingsPage   from './pages/SettingsPage';
-import MisRutinas     from './pages/MisRutinas';
-import MisFavoritos   from './pages/MisFavoritos';
+import MisFavoritosPage from './pages/MisFavoritosPage';
+import MisRutinasPage from './pages/MisRutinasPage';
+import EncuestaPage from './pages/EncuestaPage';
 
 function App() {
   return (
     <Routes>
           {/* rutas públicas */}
-          <Route path="/workouts"       element={<WorkoutsPage/>} />
+          <Route path="/workouts"       element={<RutinasPage/>} />
 
           {/* rutas protegidas */}
-          <Route path="/misFavoritos" element={<Protected><MisFavoritos /></Protected>} />
-          <Route path="/misRutinas"  element={<Protected><MisRutinas /></Protected>} />
+          <Route path="/misFavoritos" element={<Protected><MisFavoritosPage /></Protected>} />
+          <Route path="/misRutinas"  element={<Protected><MisRutinasPage /></Protected>} />
           {/* <Route path="/workouts"    element={<Protected><WorkoutsPage /></Protected>} /> */}
-          <Route path="/encuesta"    element={<Protected><Encuesta /></Protected>} />
+          <Route path="/encuesta"    element={<Protected><EncuestaPage/></Protected>} />
           <Route path="/exercises"   element={<Protected><ExercisesPage /></Protected>} />
           <Route path="/profile"     element={<Protected><ProfilePage /></Protected>} />
           <Route path="/settings"    element={<Protected><SettingsPage /></Protected>} />

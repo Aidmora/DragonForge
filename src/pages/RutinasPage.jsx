@@ -1,12 +1,11 @@
 import React from "react";
 import MenuBar from "../components/MenuBar";
 import Carousel from "../components/Carousel";
-import "./Workouts.css";
+import "./css/Rutinas.css";
 import RedesSociales from "../components/RedesSociales";
 import CardForge from "../components/CardForge";
-import SocialMediaFoot from "../components/SocialMediaFoot";
-
-export default function WorkoutsPage() {
+import Footer from "../components/Footer";
+export default function RutinasPage() {
   return (
     <div className="page-container">
       <MenuBar />
@@ -55,28 +54,10 @@ export default function WorkoutsPage() {
             </div>
           </div> */}
         </div>
-        <footer className="site-footer">
-          <div className="footer__logo">
-            <img
-              src="src/assets/DragonForge.png"
-              alt="Dragon Forge logo featuring a stylized dragon in a dynamic pose, surrounded by bold text Dragon Forge. The logo appears in a modern gym website footer, conveying strength and motivation."
-            />
-          </div>
-          <div className="footer_social">
-            <SocialMediaFoot></SocialMediaFoot>
-          </div>
-          <hr className="footer__divider"></hr>
-          <div className="footer__bottom">
-            <p className="footer__copyright">
-              © 2025 Dragon Forge. Todos los derechos reservados.
-            </p>
-            <nav className="footer__links">
-              <a href="#">Política de privacidad</a>
-              <span className="footer__sep">|</span>
-              <a href="#">Términos de uso</a>
-            </nav>
-          </div>
-        </footer>
+        <div className="Footer">
+          <Footer></Footer>
+        </div>
+        
       </main>
     </div>
   );

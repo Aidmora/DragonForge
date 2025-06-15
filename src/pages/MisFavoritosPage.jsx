@@ -1,6 +1,6 @@
 import React from 'react'
 import MenuBar from '../components/MenuBar'
-function MisFavoritos() {
+function MisFavoritosPage() {
   return (
     <>
               <div className="page-container">
@@ -19,4 +19,4 @@ function MisFavoritos() {
   )
 }
 
-export default MisFavoritos
+export default MisFavoritosPage;

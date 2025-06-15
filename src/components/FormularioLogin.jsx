@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormularioStyles.css';
+import './css/FormularioStyles.css';
 
 export default function FormularioLogin({
   email,

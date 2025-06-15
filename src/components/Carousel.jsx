@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import data from '../data/carouselData'
 import CarouselItem from './CarouselItem'
-import './Carousel.css'
+import './css/Carousel.css'
 
 export default function Carousel() {
   const [current, setCurrent]         = useState(0)

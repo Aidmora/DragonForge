@@ -1,7 +1,7 @@
 // src/components/FormularioEncuesta.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './FormularioEncuesta.css';
+import './css/FormularioEncuesta.css'; // Asegúrate de que la ruta sea correcta
 function FormularioEncuesta() {
   const [gender, setGender]       = useState('male');
   const [birthday, setBirthday]   = useState('');

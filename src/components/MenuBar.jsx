@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './MenuBar.css';
+import './css/MenuBar.css';
 import logo from '../assets/DragonForge.png';
 
 export default function MenuBar() {

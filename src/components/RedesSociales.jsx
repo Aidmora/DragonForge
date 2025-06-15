@@ -1,5 +1,5 @@
 import React from "react";
-import './RedSocial.css';
+import './css/RedSocial.css';
 function RedesSociales() {
   return (
 <div className="tooltip-container">

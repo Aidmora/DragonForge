@@ -1,5 +1,5 @@
 import React from 'react'
-import './SocialMediaFoot.css'
+import './css/SocialMediaFoot.css'
 function SocialMediaFoot() {
   return (
 <ul class="wrapper">

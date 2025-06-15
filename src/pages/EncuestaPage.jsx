@@ -1,8 +1,8 @@
 import React from 'react';
-import './Encuesta.css';
+import './css/encuesta.css';
 import FormularioEncuesta from '../components/FormularioEncuesta';
 
-function Encuesta() {
+function EncuestaPage() {
   return (
     <div className="encuesta-container">
       <div className="encuesta-card">
@@ -16,4 +16,4 @@ function Encuesta() {
     </div>
   );
 }
-export default Encuesta;
+export default EncuestaPage;

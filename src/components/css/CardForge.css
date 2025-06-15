@@ -75,7 +75,7 @@
 }
 
 .card2:hover::before {
-  background-image: url('../assets/DragonForge.png'),
+  background-image: url('../../assets/DragonForge.png'),
                     linear-gradient(-45deg, #000000 0%, #11141e 100%);
   background-repeat: no-repeat, no-repeat;
   background-position: center center, center center;
