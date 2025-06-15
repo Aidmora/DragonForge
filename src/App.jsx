@@ -16,6 +16,7 @@ function App() {
     <Routes>
           {/* rutas públicas */}
           <Route path="/workouts"       element={<RutinasPage/>} />
+         
 
           {/* rutas protegidas */}
           <Route path="/misFavoritos" element={<Protected><MisFavoritosPage /></Protected>} />
@@ -25,6 +26,7 @@ function App() {
           <Route path="/exercises"   element={<Protected><ExercisesPage /></Protected>} />
           <Route path="/profile"     element={<Protected><ProfilePage /></Protected>} />
           <Route path="/settings"    element={<Protected><SettingsPage /></Protected>} />
+          <Route path="/login"    element={<Protected><LoginPage /></Protected>} />
 
           {/* fallback */}
           <Route path="*"             element={<Navigate to="/workouts" replace />} />

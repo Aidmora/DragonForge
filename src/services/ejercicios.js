@@ -1,5 +1,5 @@
 // Ejercicios API
-const BASE = 'https://api-rest-dragon-forge.onrender.com';
+const BASE = '/api';
 
 async function request(path, options = {}) {
   const res = await fetch(BASE + path, {
@@ -9,7 +9,7 @@ async function request(path, options = {}) {
   if (!res.ok) throw new Error(res.statusText);
   return res.json();
 }
-
+export const getEjercicios = () => request('/ejercicios');
 export const crearEjercicio = datos =>
   request('/ejercicios', {
     method: 'POST',

@@ -10,7 +10,7 @@
   .site-header {
     position: fixed;
     top: 0; left: 0; right: 0;
-    height: var(--header-height);
+    height: calc(var(--header-height) + var(--nav-height));
     background: var(--color-bg-alt);
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@
     animation: fadeMenu 4s ease-out infinite;
   }
   .site-header .site-nav .logo {
-    max-height: calc(var(--header-height) - 20px);
+    max-height: calc(var(--header-height) - 5px);
     width: auto;
     margin-left:10% ;
     top: var(--nav-height);
@@ -44,7 +44,6 @@
     padding: 0.5rem 1rem;
     list-style: none;
     white-space: nowrap;
-    font-family: var(--font-body);
   }
   .barra-nav li {
     margin: 0 0.5rem;

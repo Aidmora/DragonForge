@@ -1,0 +1,40 @@
+.page-container {
+  min-height:100vw;
+}
+
+.site-header {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  z-index:1000;
+}
+.barra-busqueda{
+  margin-top: 2rem;
+  margin-left: 30%;
+}
+.site-main {
+  position:absolute;
+  background:#f3eae8;
+  top: 190px;
+}
+.contenidoEjercicios{
+  background-color: white;
+  height: 100vh;
+}
+.contenidoEjercicios h2{
+  font-family: var(--ff-main);
+  color: var(--color-bg-alt);
+  margin-left: 2%;
+  margin-right: 5%;
+  padding-top: 20px;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  text-align: justify;
+}
+.footer{
+  width: 100vw;
+  height: fit-content;
+}

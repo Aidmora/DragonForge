@@ -5,7 +5,7 @@ import { fetchRecurso } from '../utils/fetchRecurso';
 
 function EjerciciosList({ version }) {
   const resource = React.useMemo(
-    () => fetchRecurso('https://api-rest-dragon-forge.onrender.com/ejercicios'),
+    () => fetchRecurso('/api/ejercicios'),
     [version]
   );
 

@@ -10,7 +10,7 @@
   .carousel {
     position: fixed;
     width: 100vw;
-    min-height: 80vw;
+    min-height: 70vw;
     background-color: var(--bg-darker);
     background-position: center;
     background-size: cover;
