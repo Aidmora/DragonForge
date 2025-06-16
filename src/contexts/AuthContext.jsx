@@ -42,13 +42,13 @@ export function AuthProvider({ children }) {
     setUser(u)
     localStorage.setItem('userId', u.id)
     setLoading(false)
-    navigate('/workouts') 
+    navigate('/login') 
   }
 
   const logout = () => {
     setUser(null)
     localStorage.removeItem('userId')
-    navigate('/login')
+    navigate('/workouts')
   }
 
   return (
