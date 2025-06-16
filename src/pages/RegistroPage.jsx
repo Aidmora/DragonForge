@@ -1,21 +1,20 @@
 // src/pages/RegistroPage.jsx
 import React, { useState, useContext } from 'react';
-import { AuthContext }           from '../contexts/AuthContext';
+import { AuthContext }                 from '../contexts/AuthContext';
+import FormularioRegistro              from '../components/FormularioRegistro';
 import './css/RegistroStyles.css';
-import FormularioRegistro        from '../components/FormularioRegistro';
-import fitnessImage              from '../assets/DragonForge.png';
+import fitnessImage                    from '../assets/DragonForge.png';
 
 export default function RegistroPage() {
-  const [nombre, setNombre]     = useState('');
-  const [email, setEmail]       = useState('');
-  const [contrasenia, setContrasenia] = useState('');
-  const [telefono, setTelefono] = useState('');
-  const [error, setError]       = useState(null);
-  const { register }            = useContext(AuthContext);
+  const [nombre, setNombre]             = useState('');
+  const [email, setEmail]               = useState('');
+  const [contrasenia, setContrasenia]   = useState('');
+  const [telefono, setTelefono]         = useState('');
+  const [error, setError]               = useState(null);
+  const { register }                    = useContext(AuthContext);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    setError(null);
     try {
       await register({
         nombre,
@@ -26,14 +25,13 @@ export default function RegistroPage() {
         info_fenotipica_completa: false
       });
     } catch (err) {
-      setError(err.message || 'Error al registrarse');
+      setError(err.message);
     }
   };
 
   return (
     <div className="registro-container">
       <div className="registro-content">
-        {/* formulario a la izquierda */}
         <div className="registro-form-wrapper">
           <h2 className="form-title">Regístrate en DragonForge</h2>
           <FormularioRegistro
@@ -49,8 +47,6 @@ export default function RegistroPage() {
             handleSubmit={handleSubmit}
           />
         </div>
-
-        {/* imagen a la derecha */}
         <div className="registro-image-wrapper">
           <img src={fitnessImage} alt="Fitness" className="registro-image" />
         </div>

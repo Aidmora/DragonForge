@@ -1,61 +1,49 @@
 // src/contexts/AuthContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login as apiLogin } from '../services/auth';
-import { getProfile } from '../services/user';    // <-- Asegúrate de importarlo
+import { loginUser, registerUser, getUsuarioPorId } from '../services/usuarios';
+
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser]       = useState(null);
-  const [token, setToken]     = useState(localStorage.getItem('token'));
-  const [loading, setLoading] = useState(!!token);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Al montar, podrías restorear un userId de localStorage y cargar perfil:
   useEffect(() => {
-    // Si no hay token, terminamos el loading y listo
-    if (!token) {
-      setLoading(false);
-      return;
-    }
+    const storedId = localStorage.getItem('userId');
+    if (!storedId) return;
+    setLoading(true);
+    getUsuarioPorId(storedId)
+      .then(u => setUser(u))
+      .catch(() => localStorage.removeItem('userId'))
+      .finally(() => setLoading(false));
+  }, []);
 
-    // Si hay token, hacemos bootstrap del perfil
-    async function bootstrap() {
-      try {
-        console.log('🔄 Bootstrapping profile…');
-        const profile = await getProfile();
-        console.log('✅ Profile loaded:', profile);
-        setUser(profile);
-      } catch (err) {
-        console.error(' Bootstrap failed, logging out', err);
-        logout();
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    bootstrap();
-  }, [token]);
-
-  const login = async ({ email, password }) => {
-    // Llamada a auth.login (mock o real según VITE_USE_MOCK)
-    const { token: t, user: u } = await apiLogin({ email, password });
-    // Guardar token y user de inmediato
-    setToken(t);
+  const login = async ({ email, contrasenia }) => {
+    const u = await loginUser({ email, contrasenia });
     setUser(u);
-    localStorage.setItem('token', t);
-    // Redirigir
+    localStorage.setItem('userId', u.id);
+    navigate('/encuesta');
+  };
+
+  const register = async datos => {
+    const u = await registerUser(datos);
+    // tras registrarse, lo logueamos automáticamente:
+    setUser(u);
+    localStorage.setItem('userId', u.id);
     navigate('/encuesta');
   };
 
   const logout = () => {
-    setToken(null);
     setUser(null);
-    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     navigate('/login');
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

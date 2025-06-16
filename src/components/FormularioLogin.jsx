@@ -1,13 +1,9 @@
+// src/components/FormularioLogin.jsx
 import React from 'react';
-import './css/FormularioStyles.css';
+import { NavLink } from 'react-router-dom';
 
 export default function FormularioLogin({
-  email,
-  password,
-  error,
-  setEmail,
-  setPassword,
-  handleSubmit
+  email, password, error, setEmail, setPassword, handleSubmit
 }) {
   return (
     <form onSubmit={handleSubmit} className="login-form">
@@ -21,9 +17,8 @@ export default function FormularioLogin({
           required
         />
       </label>
-      
       <label className="login-label">
-        Password
+        Contraseña
         <input
           type="password"
           className="login-input"
@@ -32,15 +27,10 @@ export default function FormularioLogin({
           required
         />
       </label>
-
       {error && <p className="login-error">{error}</p>}
-
-      <button type="submit" className="login-button">
-        Continue
-      </button>
-
+      <button type="submit" className="login-button">Continue</button>
       <p className="signup-text">
-        Don't have an account? <a href="/registro">Sign up</a>
+        ¿No tienes cuenta? <NavLink to="/registro">Regístrate</NavLink>
       </p>
     </form>
   );
