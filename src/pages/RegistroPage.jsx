@@ -1,4 +1,3 @@
-// src/pages/RegistroPage.jsx
 import React, { useState, useContext } from 'react';
 import { AuthContext }                 from '../contexts/AuthContext';
 import FormularioRegistro              from '../components/FormularioRegistro';
@@ -6,15 +5,26 @@ import './css/RegistroStyles.css';
 import fitnessImage                    from '../assets/DragonForge.png';
 
 export default function RegistroPage() {
-  const [nombre, setNombre]             = useState('');
-  const [email, setEmail]               = useState('');
-  const [contrasenia, setContrasenia]   = useState('');
-  const [telefono, setTelefono]         = useState('');
-  const [error, setError]               = useState(null);
-  const { register }                    = useContext(AuthContext);
+  const [nombre, setNombre]           = useState('');
+  const [email, setEmail]             = useState('');
+  const [contrasenia, setContrasenia] = useState('');
+  const [telefono, setTelefono]       = useState('');
+  const [error, setError]             = useState(null);
+  const { register }                  = useContext(AuthContext);
 
   const handleSubmit = async e => {
     e.preventDefault();
+
+    // ---- VALIDACIONES ----
+    if (!email.includes('@')) {
+      setError('El correo debe contener un “@”');
+      return;
+    }
+    if (contrasenia.length < 8) {
+      setError('La contraseña debe tener al menos 8 caracteres');
+      return;
+    }
+    setError(null);
     try {
       await register({
         nombre,

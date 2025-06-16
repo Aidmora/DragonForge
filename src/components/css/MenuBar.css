@@ -21,7 +21,7 @@
 }
 
 .site-nav {
-  position: relative;    /* necesario para el absolute de Rutinas */
+  position: relative;  
   display: flex;
   align-items: center;
   width: 100%;
@@ -34,14 +34,11 @@
   cursor: pointer;
 }
 
-/* 1) Rutinas centrado absoluto */
 .site-nav > .barra-nav:not(.right-nav) {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
-
-/* Lista general */
 .barra-nav {
   display: flex;
   list-style: none;
@@ -56,10 +53,9 @@
 }
 
 .spacer {
-  flex: 1; /* empuja el right-nav */
+  flex: 1;
 }
 
-/* Right-nav */
 .right-nav {
   display: flex;
   justify-content: flex-end;
@@ -83,7 +79,6 @@
     box-shadow 0.2s ease;
 }
 
-/* Hover/active general: verde */
 .barra-nav a:hover,
 .barra-nav .active,
 .user-button:hover {
@@ -94,7 +89,6 @@
   border-radius: 4px;
 }
 
-/* Override: botones del menú derecho = rojo */
 .right-nav a:hover,
 .right-nav .user-button:hover {
   background: var(--color-bg-alt) ;
@@ -102,14 +96,11 @@
   color:white;
 }
 
-/* Animación de sombra */
 @keyframes fadeMenu {
   0%   { box-shadow: 0 3px 10px rgba(248, 11, 11, 0.5); }
   50%  { box-shadow: 0 5px 10px rgba(127, 221, 20, 0.5); }
   100% { box-shadow: 0 7px 10px rgba(231, 34, 16, 0.5); }
 }
-
-/* Responsivo */
 @media (max-width: 768px) {
   .site-nav {
     flex-wrap: wrap;

@@ -1,15 +1,20 @@
-// src/components/FormularioRegistro.jsx
 import React from 'react';
 import './css/FormularioRegistro.css';
 
 export default function FormularioRegistro({
-  nombre, email, contrasenia, telefono,
+  nombre,
+  email,
+  contrasenia,
+  telefono,
   error,
-  setNombre, setEmail, setContrasenia, setTelefono,
+  setNombre,
+  setEmail,
+  setContrasenia,
+  setTelefono,
   handleSubmit
 }) {
   return (
-    <form onSubmit={handleSubmit} className="registro-form">
+    <form onSubmit={handleSubmit} className="registro-form" noValidate>
       <label className="registro-label">
         Nombre completo
         <input
@@ -20,6 +25,7 @@ export default function FormularioRegistro({
           required
         />
       </label>
+
       <label className="registro-label">
         Email
         <input
@@ -30,6 +36,7 @@ export default function FormularioRegistro({
           required
         />
       </label>
+
       <label className="registro-label">
         Contraseña
         <input
@@ -37,9 +44,11 @@ export default function FormularioRegistro({
           className="registro-input"
           value={contrasenia}
           onChange={e => setContrasenia(e.target.value)}
+          minLength={8}            
           required
         />
       </label>
+
       <label className="registro-label">
         Teléfono
         <input
@@ -52,7 +61,10 @@ export default function FormularioRegistro({
       </label>
 
       {error && <p className="registro-error">{error}</p>}
-      <button type="submit" className="registro-button">Registrarse</button>
+
+      <button type="submit" className="registro-button">
+        Registrarse
+      </button>
     </form>
   );
 }
