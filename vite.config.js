@@ -9,7 +9,7 @@ export default defineConfig({
       '/api': {
         target: 'https://api-rest-dragon-forge.onrender.com',
         changeOrigin: true,
-        secure: false,              // <— DESACTIVA la validación de certificado
+        secure: false,              
         rewrite: (path) => path.replace(/^\/api/, '')
       }
     }

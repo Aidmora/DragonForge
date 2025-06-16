@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { crearEjercicio } from "../services/ejercicios";
-import "./css/NuevoEjercicioForm.css"; // Asegúrate de que la ruta sea correcta
+import "./css/NuevoEjercicioForm.css"; 
 export default function EjercicioForm({ onCreated }) {
   const [form, setForm] = useState({
     nombre: "",
@@ -21,7 +21,6 @@ export default function EjercicioForm({ onCreated }) {
     setSaving(true);
     setError(null);
     try {
-      // convertimos strings separados por comas en array
       const payload = {
         nombre: form.nombre,
         dificultad: form.dificultad,

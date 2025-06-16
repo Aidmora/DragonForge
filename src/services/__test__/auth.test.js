@@ -1,15 +1,11 @@
-
-
-import { login } from '../sercices/auth'
-import { describe, it, expect, beforeEach, afterEach,process} from 'vitest'
-
-// Guardamos y restauramos la var de entorno
+import { login } from '../auth.js'  
 const OLD_ENV = process.env
 
 describe('Auth service (mock)', () => {
   beforeEach(() => {
     process.env = { ...OLD_ENV, VITE_USE_MOCK: 'true' }
   })
+
   afterEach(() => {
     process.env = OLD_ENV
   })
@@ -30,7 +26,7 @@ describe('Auth service (mock)', () => {
 
   it('rechaza con credenciales inválidas', async () => {
     await expect(
-      login({ email: 'x@x.com', password: 'wrong' })
+      login({ email: 'ariel389@gmail.com', password: '123' })
     ).rejects.toThrow('Invalid credentials')
   })
 })
