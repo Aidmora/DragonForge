@@ -1,15 +1,35 @@
 // src/components/EjerciciosList.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import EjercicioCard from './EjercicioCard';
-import { fetchRecurso } from '../utils/fetchRecurso';
+import { getEjercicios } from '../services/ejercicios';
+import Spinner from './Spinner';
+import './css/EjerciciosList.css';
+export default function EjerciciosList() {
+  const [ejercicios, setEjercicios] = useState([]);
+  const [loading, setLoading]       = useState(true);
+  const [error, setError]           = useState(null);
 
-function EjerciciosList({ version }) {
-  const resource = React.useMemo(
-    () => fetchRecurso('https://api-rest-dragon-forge.onrender.com/ejercicios'),
-    [version]
-  );
+  useEffect(() => {
+  console.log('⚡️ Ejecuto useEffect de EjerciciosList');
+  getEjercicios()
+    .then(data => {
+      console.log('✅ Data recibida:', data);
+      setEjercicios(data);
+    })
+    .catch(err => {
+      console.error('❌ Error al cargar ejercicios:', err);
+      setError(err.message);
+    })
+    .finally(() => {
+      console.log('⏹️ Finalmente setLoading(false)');
+      setLoading(false);
+    });
+}, []);
 
-  const ejercicios = resource.read();  // puede lanzar la promesa o devolver datos
+  if (loading) return <Spinner className="Spinner"></Spinner>;
+  if (error)   return <p>Error cargando: {error}</p>;
+  if (!ejercicios.length) return <p>No hay ejercicios aún.</p>;
+
   return (
     <div className="card-grid">
       {ejercicios.map(e => (
@@ -18,4 +38,3 @@ function EjerciciosList({ version }) {
     </div>
   );
 }
-export default EjerciciosList;

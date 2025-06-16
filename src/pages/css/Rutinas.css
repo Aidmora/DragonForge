@@ -29,7 +29,7 @@
 .site-main {
   position:absolute;
   background: var(--bg-dark);
-  padding-top: calc(var(--header-h) + var(--nav-h));
+  top: 190px;
 }
 .content-wrapper .row.com{
   background-color: #11141e;

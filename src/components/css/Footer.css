@@ -2,10 +2,13 @@ footer{
     width: 100%;
     height: fit-content;
 }
+.footer_social{
+  margin-right:3%;
+}
 .footer__logo img {
   height: 150px;
   object-fit: contain;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem auto;
 }
 .footer__divider {
   border: none;
@@ -39,10 +42,6 @@ footer{
 .footer__links a:hover {
   color: var(--green-neon);
 }
-.content-wrapper {
-  margin: 0 auto;
-}
-
 .site-footer {
   background: #11141e;
   color: var(--text);

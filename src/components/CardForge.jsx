@@ -1,6 +1,5 @@
 import React from "react";
 import './css/CardForge.css';
-import logo from '../assets/DragonForge.png';
 function CardForge() {
   return (
     <div className="card2">

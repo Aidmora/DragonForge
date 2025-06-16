@@ -57,7 +57,6 @@ export default function RutinasPage() {
         <div className="Footer">
           <Footer></Footer>
         </div>
-        
       </main>
     </div>
   );

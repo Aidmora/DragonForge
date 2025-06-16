@@ -17,7 +17,6 @@ function FormularioEncuesta() {
 
   return (
     <form onSubmit={handleSubmit} className="encuesta-form">
-      {/* GÉNERO */}
       <div className="encuesta-group">
         <label>Gender</label>
         <div className="gender-toggle">
@@ -34,7 +33,6 @@ function FormularioEncuesta() {
         </div>
       </div>
 
-      {/* CUMPLEAÑOS */}
       <div className="encuesta-group">
         <label>Birthday</label>
         <input
@@ -44,7 +42,6 @@ function FormularioEncuesta() {
         />
       </div>
 
-      {/* ALTURA */}
       <div className="encuesta-group">
         <label>Height</label>
         <div className="input-with-unit">
@@ -57,8 +54,6 @@ function FormularioEncuesta() {
           <span>cm</span>
         </div>
       </div>
-
-      {/* PESO */}
       <div className="encuesta-group">
         <label>Weight</label>
         <div className="input-with-unit">
@@ -71,8 +66,6 @@ function FormularioEncuesta() {
           <span>kg</span>
         </div>
       </div>
-
-      {/* BOTÓN NEXT */}
       <button type="submit" className="encuesta-next">
         NEXT
       </button>
