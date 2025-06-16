@@ -1,62 +1,59 @@
 // src/contexts/AuthContext.jsx
-import React, { createContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { login as apiLogin } from '../services/auth';
-import { getProfile } from '../services/user';    // <-- Asegúrate de importarlo
-export const AuthContext = createContext();
+import React, { createContext, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import {
+  loginUser,
+  registerUser,
+  getUsuarioPorId
+} from '../services/usuarios'
+
+export const AuthContext = createContext()
 
 export function AuthProvider({ children }) {
-  const [user, setUser]       = useState(null);
-  const [token, setToken]     = useState(localStorage.getItem('token'));
-  const [loading, setLoading] = useState(!!token);
-  const navigate = useNavigate();
+  const [user, setUser]       = useState(null)
+  const [loading, setLoading] = useState(true)
+  const navigate = useNavigate()
 
+  // Al montar: si hay userId en localStorage, recarga perfil
   useEffect(() => {
-    // Si no hay token, terminamos el loading y listo
-    if (!token) {
-      setLoading(false);
-      return;
+    const storedId = localStorage.getItem('userId')
+    if (storedId) {
+      getUsuarioPorId(storedId)
+        .then(u => setUser(u))
+        .catch(() => localStorage.removeItem('userId'))
+        .finally(() => setLoading(false))
+    } else {
+      setLoading(false)
     }
+  }, [])
 
-    // Si hay token, hacemos bootstrap del perfil
-    async function bootstrap() {
-      try {
-        console.log('🔄 Bootstrapping profile…');
-        const profile = await getProfile();
-        console.log('✅ Profile loaded:', profile);
-        setUser(profile);
-      } catch (err) {
-        console.error(' Bootstrap failed, logging out', err);
-        logout();
-      } finally {
-        setLoading(false);
-      }
-    }
+  const login = async ({ email, contrasenia }) => {
+    setLoading(true)
+    const u = await loginUser({ email, contrasenia })
+    setUser(u)
+    localStorage.setItem('userId', u.id)
+    setLoading(false)
+    navigate('/workouts')   
+  }
 
-    bootstrap();
-  }, [token]);
-
-  const login = async ({ email, password }) => {
-    // Llamada a auth.login (mock o real según VITE_USE_MOCK)
-    const { token: t, user: u } = await apiLogin({ email, password });
-    // Guardar token y user de inmediato
-    setToken(t);
-    setUser(u);
-    localStorage.setItem('token', t);
-    // Redirigir
-    navigate('/encuesta');
-  };
+  const register = async datos => {
+    setLoading(true)
+    const u = await registerUser(datos)
+    setUser(u)
+    localStorage.setItem('userId', u.id)
+    setLoading(false)
+    navigate('/login') 
+  }
 
   const logout = () => {
-    setToken(null);
-    setUser(null);
-    localStorage.removeItem('token');
-    navigate('/login');
-  };
+    setUser(null)
+    localStorage.removeItem('userId')
+    navigate('/workouts')
+  }
 
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
-  );
+  )
 }

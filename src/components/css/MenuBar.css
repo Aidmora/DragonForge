@@ -1,119 +1,121 @@
 :root {
-    --header-height: 110px;
-    --nav-height:    80px;
-    --color-bg-alt:  #11141e;
-    --color-primary: #5EFF00;
-    --color-text:    #E0E0E0;
-    --color-text-inv:#000000;
-    --font-body:     'Share Tech Mono', monospace;
+  --header-height: 110px;
+  --nav-height:    80px;
+  --color-bg-alt:  #11141e;
+  --color-primary: #5EFF00;
+  --color-text:    #E0E0E0;
+  --color-text-inv:#000000;
+  --font-body:     'Share Tech Mono', monospace;
+}
+
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: calc(var(--header-height) + var(--nav-height));
+  background: var(--color-bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeMenu 4s ease-out infinite;
+}
+
+.site-nav {
+  position: relative;  
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.logo {
+  max-height: calc(var(--header-height) - 5px);
+  cursor: pointer;
+}
+
+.site-nav > .barra-nav:not(.right-nav) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.barra-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.barra-nav li {
+  margin: 0 0.5rem;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.right-nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.barra-nav a,
+.user-button {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--color-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.barra-nav a:hover,
+.barra-nav .active,
+.user-button:hover {
+  background: var(--color-primary);
+  color: var(--color-text-inv);
+  box-shadow: 0 0 8px var(--color-primary);
+  transform: scale(1.05);
+  border-radius: 4px;
+}
+
+.right-nav a:hover,
+.right-nav .user-button:hover {
+  background: var(--color-bg-alt) ;
+  box-shadow: 0 0 8px red ;
+  color:white;
+}
+
+@keyframes fadeMenu {
+  0%   { box-shadow: 0 3px 10px rgba(248, 11, 11, 0.5); }
+  50%  { box-shadow: 0 5px 10px rgba(127, 221, 20, 0.5); }
+  100% { box-shadow: 0 7px 10px rgba(231, 34, 16, 0.5); }
+}
+@media (max-width: 768px) {
+  .site-nav {
+    flex-wrap: wrap;
   }
-  .site-header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: calc(var(--header-height) + var(--nav-height));
-    background: var(--color-bg-alt);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    animation: fadeMenu 4s ease-out infinite;
-  }
-  .site-header .site-nav .logo {
-    max-height: calc(var(--header-height) - 5px);
-    width: auto;
-    margin-left:10% ;
-    top: var(--nav-height);
-    position:relative;
-    margin-right: auto;
-  }
-  header .site-nav {
+  .barra-nav,
+  .right-nav {
     width: 100%;
-    position: fixed;
-    left: 0; right: 0;
-    margin-bottom:5%;
-    background: var(--color-bg-alt);
-    z-index: 999;
-  }
-  
-  .barra-nav {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 0;
-    padding: 0.5rem 1rem;
-    list-style: none;
-    white-space: nowrap;
   }
-  .barra-nav li {
-    margin: 0 0.5rem;
+}
+
+@media (max-width: 690px) {
+  .barra-nav a,
+  .user-button {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.7rem;
   }
-  .barra-nav a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: var(--color-text);
-    text-decoration: none;
-    text-transform: uppercase;
-    transition:
-      background 0.2s ease,
-      color 0.2s ease,
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
-  }
-  .barra-nav a:hover,
-  .barra-nav .active {
-    background: var(--color-primary);
-    color: var(--color-text-inv);
-    box-shadow: 0 0 8px var(--color-primary);
-    transform: scale(1.05);
-    border-radius: 4px;
-  }
-  @keyframes fadeMenu {
-    0% {
-      box-shadow: 0 3px 10px rgba(248, 11, 11, 0.5);
-    }
-    50% {
-      box-shadow: 0 5px 10px rgba(127, 221, 20, 0.5);
-    }
-    100% {
-      box-shadow: 0 7px 10px rgba(231, 34, 16, 0.5);
-    }
-  }
-  @media (max-width: 768px) {
-    .site-nav {
-      position: static;
-      height: auto;
-      overflow: visible;
-      background-color: #333;
-    }
-    .barra-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      padding: 0;
-    }
-    .barra-nav li {
-      width: 100%;
-      text-align: center;
-    }
-    .barra-nav a {
-      padding: 1rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    .barra-nav li:first-child a {
-      border-top: none;
-    }
-  }
-  @media (max-width: 690px) {
-    .site-nav {
-      position: sticky;
-      margin-top: var(--header-height);
-      width: 100%;
-      overflow: visible;
-      background-color: #333;
-    }
-      .barra-nav a {
-        padding: 0.5rem 0.7rem;   
-        font-size: 0.7rem;      
-      }
-  }
+}

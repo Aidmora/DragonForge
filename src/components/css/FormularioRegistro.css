@@ -1,0 +1,108 @@
+.registro-label {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #0f0;
+}
+
+/* Inputs: caja con borde plomo + foco fosforescente */
+.registro-input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #666;
+  /* borde plomo */
+  border-radius: 4px;
+  padding: 0.75rem;
+  /* un poco más de padding */
+  color: #fff;
+  /* texto blanco */
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.registro-input:focus {
+  outline: none;
+  border-color: #0f0;
+  /* borde verde vivo */
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
+  /* glow fosforescente */
+}
+
+.registro-input:hover {
+  transform: scale(1);
+  border-color: #0f0;
+  background-color: transparent;
+}
+
+/* Error en rojo */
+.registro-error {
+  color: #ff4444;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Botón de registro (idéntico al login-button) */
+.registro-button {
+  --main-color: rgb(46, 213, 115);
+  --main-bg-color: rgba(46, 213, 116, 0.36);
+  --pattern-color: rgba(46, 213, 116, 0.073);
+  filter: hue-rotate(0deg);
+
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.6rem;
+  background: radial-gradient(circle,
+      var(--main-bg-color) 0%,
+      rgba(0, 0, 0, 0) 95%),
+    linear-gradient(var(--pattern-color) 1px, transparent 1px),
+    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+  background-size:
+    cover,
+    15px 15px,
+    15px 15px;
+  background-position:
+    center center,
+    center center,
+    center center;
+  border-image: radial-gradient(circle,
+      var(--main-color) 0%,
+      rgba(0, 0, 0, 0) 100%) 1;
+  border-width: 3px 0 2px 0;
+  color: var(--main-color);
+  padding: 1rem 3rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 100%;
+  transition: background-size 0.4s ease-in-out;
+}
+
+.registro-button:hover {
+  background-size:
+    cover,
+    10px 10px,
+    10px 10px;
+}
+
+.registro-button:active {
+  filter: hue-rotate(250deg);
+}
+
+/* Texto de vuelta al login */
+.registro-text {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #aaa;
+  text-align: center;
+}
+
+.registro-text a {
+  color: #0f0;
+  text-decoration: none;
+}
+
+.registro-text a:hover {
+  text-decoration: underline;
+}

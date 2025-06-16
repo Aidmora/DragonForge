@@ -22,11 +22,14 @@
   }
   .login-input:focus {
     outline: none;
-    border-color: #0f0;                  /* borde verde vivo */
-    box-shadow: 0 0 8px rgba(0,255,0,0.7);/* glow fosforescente */
+    border-color: #0f0;                 /* borde verde vivo */
+    box-shadow: 0 0 10px rgba(0,255,0,0.7);/* glow fosforescente */
   }
-  
-  
+  .login-input:hover{
+    transform: scale(1);
+    border-color: #0f0;  
+    background-color: transparent;
+  }
   /* Error en rojo */
   .login-error {
     color: #ff4444;

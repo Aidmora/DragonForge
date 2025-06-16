@@ -1,12 +1,16 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../contexts/AuthContext';
-import { Navigate } from 'react-router-dom';
+// src/components/Protected.jsx
+import React, { useContext } from 'react'
+import { Navigate } from 'react-router-dom'
+import { AuthContext } from '../contexts/AuthContext'
 
- function Protected({ children }) {
-  const { token, loading } = useContext(AuthContext);
+export default function Protected({ children }) {
+  const { user, loading } = useContext(AuthContext)
 
-  if (loading) return <div>Loading...</div>;
-  if (!token)   return <Navigate to="/login" replace />;
-  return children;
+  if (loading) {
+    return <div role="status">Cargando…</div>
+  }
+  if (!user) {
+    return <Navigate to="/login" replace />
+  }
+  return <>{children}</>
 }
-export default Protected;

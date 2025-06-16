@@ -13,8 +13,6 @@ jest.mock('../../services/ejercicios', () => ({
 test('integra formulario y llama a crearEjercicio + onCreated', async () => {
   const onCreated = jest.fn()
   render(<EjercicioForm onCreated={onCreated} />)
-
-  // Relleno el formulario
   fireEvent.change(screen.getByLabelText(/Nombre/i), {
     target: { value: 'X' }
   })
@@ -30,13 +28,7 @@ test('integra formulario y llama a crearEjercicio + onCreated', async () => {
   fireEvent.change(screen.getByLabelText(/Instrucciones/i), {
     target: { value: '...' }
   })
-
-  // Hago submit
   fireEvent.click(screen.getByRole('button', { name: /Crear/i }))
-
-  // Espero a que el servicio se invoque
   await waitFor(() => expect(mockCrear).toHaveBeenCalledTimes(1))
-
-  // Verifico que onCreated haya sido llamado
   expect(onCreated).toHaveBeenCalled()
 })

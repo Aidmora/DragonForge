@@ -19,13 +19,7 @@ jest.mock('../../services/ejercicios', () => ({
 
 test('integra componente + servicio y muestra ejercicios', async () => {
   render(<EjerciciosList />)
-
-  // 1) aparece el spinner inicialmente
   expect(screen.getByRole('status')).toBeInTheDocument()
-
-  // 2) espera a que el spinner desaparezca (envuelto en act)
   await waitForElementToBeRemoved(() => screen.getByRole('status'))
-
-  // 3) muestra el ejercicio mockeado
   expect(screen.getByText('Prensa piernas')).toBeInTheDocument()
 })
