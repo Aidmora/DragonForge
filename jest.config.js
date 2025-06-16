@@ -1,5 +1,7 @@
+// jest.config.js (o .cjs si usas "type": "module")
 export default {
   testEnvironment: 'jsdom',
+  setupFiles: ['<rootDir>/jest.setup.js'],  // si tienes polyfills
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest'
   },
