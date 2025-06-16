@@ -6,9 +6,9 @@ export default function MenuExercises({ selected, onSelect }) {
   const buttons = [
     { id: "listado",       label: "Listado" },
     { id: "nuevo",         label: "Nuevo" },
-    { id: "dificultad",    label: "Dificultad" },
-    { id: "equipamiento",  label: "Equipamiento" },
-    { id: "grupo",         label: "Grupo muscular" },
+    // { id: "dificultad",    label: "Dificultad" },
+    // { id: "equipamiento",  label: "Equipamiento" },
+    // { id: "grupo",         label: "Grupo muscular" },
   ];
 
   return (
