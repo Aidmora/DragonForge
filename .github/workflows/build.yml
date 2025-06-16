@@ -3,20 +3,17 @@ on: [push]
 
 jobs:
   build:
-    runs-on: [self-hosted]       
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    runs-on: [self-hosted]
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
 
       - name: Install dependencies
-        working-directory: dragon-forge-client
-        run: npm ci
+        run: npm ci       
 
       - name: Build
-        working-directory: dragon-forge-client
-        run: npm run build
+        run: npm run build 
