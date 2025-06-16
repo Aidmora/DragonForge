@@ -1,7 +1,7 @@
 // src/components/FormularioLogin.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import './css/FormularioStyles.css';
 export default function FormularioLogin({
   email, password, error, setEmail, setPassword, handleSubmit
 }) {
