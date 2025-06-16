@@ -10,6 +10,7 @@ import SettingsPage   from './pages/SettingsPage';
 import MisFavoritosPage from './pages/MisFavoritosPage';
 import MisRutinasPage from './pages/MisRutinasPage';
 import EncuestaPage from './pages/EncuestaPage';
+import RegistroPage from './pages/RegistroPage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/profile"     element={<Protected><ProfilePage /></Protected>} />
           <Route path="/settings"    element={<Protected><SettingsPage /></Protected>} />
           <Route path="/login"    element={<Protected><LoginPage /></Protected>} />
+          <Route path="/registro"    element={<Protected><RegistroPage /></Protected>} />
 
           {/* fallback */}
           <Route path="*"             element={<Navigate to="/workouts" replace />} />

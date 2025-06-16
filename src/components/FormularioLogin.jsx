@@ -40,7 +40,7 @@ export default function FormularioLogin({
       </button>
 
       <p className="signup-text">
-        Don't have an account? <a href="/signup">Sign up</a>
+        Don't have an account? <a href="/registro">Sign up</a>
       </p>
     </form>
   );

@@ -1,0 +1,75 @@
+/* src/pages/css/RegistroStyles.css */
+html, body {
+  margin: 0; padding: 0;
+  width: 100%; height: 100%;
+  background: #000;   
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.registro-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;      
+  background: #111; 
+}
+
+.registro-content {
+  display: flex;
+  width: auto;
+  max-width: 1000px;
+  background: #111;              
+  border: 2px solid #0f0;       
+  box-shadow: 0 0 20px rgba(0,255,0,0.4);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* aquí intercambiamos el orden: form primero, luego imagen */
+.registro-form-wrapper {
+  flex: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-title {
+  margin-bottom: 1rem;
+  color: #0f0;
+  text-shadow: 0 0 5px rgba(0,255,0,0.7);
+  font-size: 1.5rem;
+}
+
+.registro-image-wrapper {
+  flex: 2;
+  position: relative;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registro-image {
+  width: 80%;
+  height: 70%;
+  object-fit: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .registro-content {
+    flex-direction: column;
+  }
+  .registro-image-wrapper,
+  .registro-form-wrapper {
+    flex: unset;
+    width: 100%;
+  }
+  .registro-image-wrapper {
+    height: 200px;
+  }
+}
