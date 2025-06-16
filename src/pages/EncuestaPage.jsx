@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/encuesta.css';
+import './css/Encuesta.css';
 import FormularioEncuesta from '../components/FormularioEncuesta';
 
 function EncuestaPage() {
