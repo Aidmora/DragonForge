@@ -1,10 +1,10 @@
-// src/components/__tests__/EjercicioForm.integracion.test.jsx
+/* eslint-env jest */
+/* eslint-env browser, jest */ 
 import React from 'react'
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import EjercicioForm from '../../components/EjercicioForm'
 
-// Mock del servicio crearEjercicio
 const mockCrear = jest.fn(() => Promise.resolve({ id: 99 }))
 jest.mock('../../services/ejercicios', () => ({
   crearEjercicio: (datos) => mockCrear(datos)
