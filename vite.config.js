@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
+
       '/api': {
         target: 'https://api-rest-dragon-forge.onrender.com',
         changeOrigin: true,
-        secure: false,              
         rewrite: (path) => path.replace(/^\/api/, '')
       }
     }

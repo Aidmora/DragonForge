@@ -1,9 +1,10 @@
-// jest.config.js
 export default {
   testEnvironment: 'jsdom',
-  // Si quitas extensionsToTreatAsEsm ya no te da el warning
-  setupFilesAfterEnv: [], 
+  transform: {
+    '^.+\\.[tj]sx?$': 'babel-jest'
+  },
   moduleNameMapper: {
-    '\\.(css|less)$': 'identity-obj-proxy'
+    '\\.(css|less|scss)$': 'identity-obj-proxy',
+    '\\.(png|jpe?g|gif|svg)$': '<rootDir>/__mocks__/fileMock.js'
   }
-}
+};

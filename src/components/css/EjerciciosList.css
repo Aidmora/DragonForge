@@ -1,5 +1,6 @@
 .card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;          /* funciona igual con flexbox */
+  display: grid;
+  grid-template-columns: 1fr; /* una columna */
+  gap: 1.5rem;                /* espacio entre filas */
+  padding: 0 1rem;
 }

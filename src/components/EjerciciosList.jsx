@@ -10,17 +10,21 @@ export default function EjerciciosList() {
   const [error, setError]           = useState(null);
 
   useEffect(() => {
-    getEjercicios()
-      .then(data => {
-        setEjercicios(data);
-      })
-      .catch(err => {
-        setError(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  console.log('⚡️ Ejecuto useEffect de EjerciciosList');
+  getEjercicios()
+    .then(data => {
+      console.log('✅ Data recibida:', data);
+      setEjercicios(data);
+    })
+    .catch(err => {
+      console.error('❌ Error al cargar ejercicios:', err);
+      setError(err.message);
+    })
+    .finally(() => {
+      console.log('⏹️ Finalmente setLoading(false)');
+      setLoading(false);
+    });
+}, []);
 
   if (loading) return <Spinner className="Spinner"></Spinner>;
   if (error)   return <p>Error cargando: {error}</p>;

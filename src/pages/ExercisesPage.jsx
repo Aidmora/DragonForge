@@ -35,7 +35,7 @@ export default function WorkoutsPage() {
               </div> 
               <div className="row gx-6">
                 <div className="listadoEjercicios">
-                  <EjerciciosList version={version} />
+                  <EjerciciosList  />
                 </div>
                 
               </div> 
