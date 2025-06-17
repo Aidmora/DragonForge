@@ -8,6 +8,7 @@ html, body {
   
   .login-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -63,6 +64,10 @@ html, body {
     color: #0f0;
     text-shadow: 0 0 5px rgba(0,255,0,0.7);
     font-size: 1.5rem;
+  }
+  .barraCarga{
+    position: fixed;
+    top:80%;
   }
   @media (max-width: 768px) {
     .login-content {

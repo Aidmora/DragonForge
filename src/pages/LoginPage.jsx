@@ -1,23 +1,27 @@
 // src/pages/LoginPage.jsx
-import React, { useState, useContext } from 'react';
-import { NavLink }                     from 'react-router-dom';
-import { AuthContext }                 from '../contexts/AuthContext';
-import FormularioLogin                 from '../components/FormularioLogin';
-import './css/LoginStyles.css';
-import fitnessImage                    from '../assets/DragonForge.png';
+import React, { useState, useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
+import FormularioLogin from "../components/FormularioLogin";
+import "./css/LoginStyles.css";
+import fitnessImage from "../assets/DragonForge.png";
+import BarraCarga from "../components/BarraCarga";
 
 export default function LoginPage() {
-  const [email, setEmail]               = useState('');
-  const [contrasenia, setContrasenia]   = useState('');
-  const [error, setError]               = useState(null);
-  const { login }                       = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [contrasenia, setContrasenia] = useState("");
+  const [loading, setLoading] = useState(null);
+  const [error, setError] = useState(null);
+  const { login } = useContext(AuthContext);
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login({ email, contrasenia });
+      setLoading(true);
+      await login({ email, contrasenia }); 
     } catch (err) {
       setError(err.message);
+      setLoading(false);
     }
   };
 
@@ -39,6 +43,11 @@ export default function LoginPage() {
           />
         </div>
       </div>
+      {loading === true && (
+        <div className="barraCarga">
+          <BarraCarga></BarraCarga>
+        </div>
+      )}
     </div>
   );
 }
