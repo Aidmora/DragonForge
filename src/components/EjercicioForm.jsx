@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { crearEjercicio } from "../services/ejercicios";
-import "./css/NuevoEjercicioForm.css"; 
+import "./css/NuevoEjercicioForm.css";
+import EjercicioDificultad from "./EjercicioDificultad";
 export default function EjercicioForm({ onCreated }) {
   const [form, setForm] = useState({
     nombre: "",
@@ -58,15 +59,16 @@ export default function EjercicioForm({ onCreated }) {
       </div>
 
       <div className="form-group">
-        <label htmlFor="dificultad">Dificultad</label>
-        <input
-          id="dificultad"
-          name="dificultad"
-          value={form.dificultad}
-          onChange={handleChange}
-          placeholder="Dificultad"
-          required
-        />
+        <div className="dificultad">
+          <label htmlFor="dificultad">Dificultad</label>
+          <div className="ejercicioDificultad">
+            <EjercicioDificultad
+              value={form.dificultad}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
       </div>
 
       <div className="form-group">

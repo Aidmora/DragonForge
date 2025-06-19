@@ -3,8 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 800px;
-  margin: 0 auto;
-  margin-bottom: 2rem;
+  margin-bottom: 2rem ;
   border-radius: 10px;
   background: linear-gradient(135deg, var(--color-bg-alt));
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px,
@@ -18,6 +17,9 @@
   margin-bottom: 2rem;
   margin-top: 1rem;
 }
+.nuevo-form .form-group .dificultad{
+  margin-bottom: 2rem;
+}
 .nuevo-form .form-group label {
   color: white;
   margin-bottom: 0.5rem;
@@ -29,13 +31,14 @@
   transform: scale(1.01);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px,
     var(--color-primary) 2px 2px 2px;
+  color:var(--color-primary)
 
 }
 
 .nuevo-form input,
 .nuevo-form textarea {
   width: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
   background: transparent;
   border: 2px solid var(--color-bg-alt);
   border-radius: 4px; 

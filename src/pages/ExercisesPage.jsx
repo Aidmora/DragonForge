@@ -60,6 +60,11 @@ export default function WorkoutsPage() {
               </div>
             </>
           )}
+          {section === "dificultad" && (
+            <>
+              
+            </>
+          )}
         </div>
 
         <div className="footer">
