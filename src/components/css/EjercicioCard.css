@@ -10,24 +10,21 @@
   background-size: cover;
   transition: transform .3s ease, box-shadow .3s ease;
 }
-
-/* 1. Capa overlay sobre la imagen, bajo el contenido */
-/* 2. Contenido (título + características) */
 .card-content {
   position: relative;
   z-index: 2;
-  height: 300px;
+  height: 400px;
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: var(--color-bg-alt);
   align-items: center;
+  border-radius: inherit; 
+  background: rgba(0,0,0,0.6); 
 }
 
-/* 3. Título */
 .nombreEjercicio {
   font-family: var(--ff-main);
-  color:wheat;
+  color: wheat;
   font-weight: 700;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -35,9 +32,11 @@
   opacity: 1;
   transition: opacity .3s ease;
 }
+
 .ejerciciosCarac {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   color: var(--color-bg-alt);
   text-align: left;
@@ -47,14 +46,16 @@
   z-index: 2;
 }
 
-.card:hover{
+.card:hover {
   transform: translateY(-5px);
   background: var(--color-bg-alt);
-  box-shadow: 0 20px 20px var(--color-bg-alt);
-  
+  box-shadow: 0 30px 30px var(--color-bg-alt);
+
 }
-.card:hover, .ejerciciosCarac{
-color: white;
+
+.card:hover,
+.ejerciciosCarac {
+  color: white;
 }
 
 .card:hover .nombreEjercicio {
