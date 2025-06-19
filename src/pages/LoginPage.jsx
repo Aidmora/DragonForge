@@ -32,7 +32,7 @@ export default function LoginPage() {
           <img src={fitnessImage} alt="Fitness" className="login-image" />
         </div>
         <div className="login-form-wrapper">
-          <h2 className="form-title">Log in to DragonForge</h2>
+          <h2 className="form-title">Ingresa a DragonForge</h2>
           <FormularioLogin
             email={email}
             password={contrasenia}
