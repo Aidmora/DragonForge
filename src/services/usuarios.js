@@ -34,7 +34,7 @@ export const getUsuarioPorId = usuario_id =>
 
 export const updateUsuario = (usuario_id, datos) =>
   request(`/usuarios/${usuario_id}`, {
-    method: 'PUT',
+    method: 'PATCH',
     body: JSON.stringify(datos)
   });
 

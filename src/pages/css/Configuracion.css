@@ -1,0 +1,96 @@
+:root {
+  --bg-dark:  #141414;
+  --bg-alt:   #1f1f1f;
+  --text:     #E0E0E0;
+  --ff-main: 'Montserrat', sans-serif;
+  --font-body:     'Share Tech Mono', monospace;
+}
+
+.page-container {
+  min-height:100vw;
+}
+
+.contenidoMisRutinas {
+  padding-left: 0;
+  padding-right: 0 ;
+  max-width: 100%;
+  height: 100vh;
+}
+.footer{
+  width: 100vw;
+  height: fit-content;
+}
+.conf{
+    width: 100vh;
+    box-shadow: 0 0 2px var(--color-bg-alt);
+    align-content: center;
+}
+.conf h2{
+    font-weight: 600;
+    font-family: var(--ff-main);
+    padding: 30px 100px 10px;
+    color: var(--color-bg-alt);
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.config-content {
+  display: flex;
+  max-width: 1300px;
+  margin: 2rem auto 2rem;
+  gap: 2rem;
+  height: 80vh;
+}
+.config-list {
+    margin-top: 5%;
+    margin-left: 40%;
+    width:80vh;
+    height: 40vh;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    position: relative;
+    align-content: center;
+}
+.config-list h3{
+    padding: 15px;
+    font-weight: 500;
+}
+
+.config-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 3rem;
+  color: var(--color-bg-alt);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.config-item .icon {
+  margin-right: 0.6rem;
+}
+.config-item .chevron {
+  margin-left: auto;
+}
+.config-item:hover {
+  box-shadow: 3px 0px 0px 0px var(--color-primary);
+  color: #000;
+  transform: scale(1.03);
+
+}
+.config-panel{
+    padding-top: 20px;
+}
+
+.config-panel .componenteActivo{
+    margin-top: 5%;
+    margin-left: 40%;
+    width: 700px;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    position: relative;
+}
+
+.config-placeholder {
+  color: var(--text);
+  font-style: italic;
+}

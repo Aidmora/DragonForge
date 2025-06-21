@@ -1,0 +1,37 @@
+.boton-atras {
+  background: var(--color-bg-alt);
+  border: none;
+  padding: 10px 20px;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  width: 200px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skew(-21deg);
+  margin-right: 15%;
+}
+
+.boton-atras::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: 0;
+  background: var(--color-primary);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.boton-atras:hover {
+  color: #fff;
+}
+
+.boton-atras:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}

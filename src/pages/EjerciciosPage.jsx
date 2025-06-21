@@ -7,7 +7,7 @@ import EjercicioForm from "../components/EjercicioForm";
 import BarraBusqueda from "../components/BarraBusqueda";
 import MenuExercises from "../components/MenuExercises";
 import Footer from "../components/Footer";
-import "./css/Rutinas.css";
+import "./css/Ejercicios.css";
 import logo from "../assets/DragonFogeExercises.png";
 
 export default function EjerciciosPage() {
@@ -22,14 +22,6 @@ export default function EjerciciosPage() {
           <div className="row">
             <div className="col-12">
               <Carousel />
-            </div>
-          </div>
-          <div className="row com">
-            <div className="col-6">
-              <p>Interesado en entrar a DragonForge?</p>
-            </div>
-            <div className="col-6">
-              <button className="botonInfo">ver más</button>
             </div>
           </div>
           <div className="row comD">
@@ -79,9 +71,6 @@ export default function EjerciciosPage() {
               <Footer></Footer>
             </div>
           </div>
-        </div>
-        <div className="Footer">
-          <Footer></Footer>
         </div>
       </main>
     </div>

@@ -97,6 +97,7 @@
 .right-nav .user-button:hover{
   background: var(--color-bg-alt) ;
   transform: scale(1.07);
+  box-shadow: 0 0 10px red ;
 }
 
 .user-dropdown {
@@ -106,7 +107,7 @@
 .user-button {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .avatar {
@@ -123,16 +124,8 @@
   text-transform: uppercase;
 }
 
-.chevron {
-  margin-left: 0.25rem;
-  font-size: 0.8rem;
-  color: var(--color-text);
-  transition: transform 0.2s;
-}
 
-.user-button:hover .chevron {
-  transform: scale(1.1);
-}
+
 
 .dropdown .menu {
   position: absolute;

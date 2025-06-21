@@ -11,7 +11,7 @@ import MisEjerciciosPage   from './pages/MisEjerciciosPage';
 import MisFavoritosPage from './pages/MisFavoritosPage';
 import MisRutinasPage from './pages/MisRutinasPage';
 import EncuestaPage   from './pages/EncuestaPage';
-
+import ConfiguracionPage from './pages/ConfiguracionPage';
 function App() {
   return (
     <Routes>
@@ -27,6 +27,7 @@ function App() {
       <Route path="/misFavoritos" element={<Protected><MisFavoritosPage/></Protected>} />
       <Route path="/profile"   element={<Protected><ProfilePage/></Protected>} />
       <Route path="/misEjercicios"  element={<Protected><MisEjerciciosPage/></Protected>} />
+      <Route path="/configuracion"  element={<Protected><ConfiguracionPage/></Protected>} />
 
       {/* fallback */}
       <Route path="*" element={<Navigate to="/ejercicios" replace/>}/>
