@@ -8,6 +8,7 @@ export default function FormularioRegistro({
   telefono,
   error,
   setNombre,
+  submitting,
   setEmail,
   setContrasenia,
   setTelefono,
@@ -62,8 +63,12 @@ export default function FormularioRegistro({
 
       {error && <p className="registro-error">{error}</p>}
 
-      <button type="submit" className="registro-button">
-        Registrarse
+      <button
+        type="submit"
+        className="registro-button"
+        disabled={submitting}     
+      >
+        {submitting ? 'Registrando…' : 'Registrarse'}
       </button>
     </form>
   );
