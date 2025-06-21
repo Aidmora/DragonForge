@@ -1,75 +1,94 @@
-// src/components/FormularioEncuesta.jsx
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './css/FormularioEncuesta.css'; // Asegúrate de que la ruta sea correcta
-function FormularioEncuesta() {
-  const [gender, setGender]       = useState('male');
-  const [birthday, setBirthday]   = useState('');
-  const [height, setHeight]       = useState('');
-  const [weight, setWeight]       = useState('');
-  const navigate = useNavigate();               // ① llama al hook aquí
+import React, { useState, useContext } from "react";
+import { useNavigate }           from "react-router-dom";
+import { AuthContext }           from "../contexts/AuthContext";
+import { updatePhenotipo}         from "../services/usuarios";
+import "./css/FormularioEncuesta.css";
 
-  const handleSubmit = e => {
+export default function FormularioEncuesta() {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [gender,   setGender]   = useState(user?.sexo        || "male");
+  const [Nacimiento, setNacimiento] = useState(user?.fecha_nacimiento || "");
+  const [height,   setHeight]   = useState(user?.altura      || "");
+  const [weight,   setWeight]   = useState(user?.peso        || "");
+  const [saving,   setSaving]   = useState(false);
+  const [error,    setError]    = useState(null);
+
+const handleSubmit = async e => {
     e.preventDefault();
-    // guardado de datos ... funcionalidad (añadir)
-    navigate('/workouts');                      
+    setError(null);
+    setSaving(true);
+
+    try {
+      await updatePhenotipo(user.id, {
+        sexo: gender,
+        fecha_nacimiento: Nacimiento,
+        altura: Number(height),
+        peso: Number(weight)
+      });
+      navigate("/ejercicios");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="encuesta-form">
+      {error && <p className="error">Error: {error}</p>}
+
       <div className="encuesta-group">
-        <label>Gender</label>
+        <label>Sexo</label>
         <div className="gender-toggle">
-          {['female','male','other'].map(option => (
+          {["Femenino","Masculino"].map(opt => (
             <button
+              key={opt}
               type="button"
-              key={option}
-              className={gender === option ? 'active' : ''}
-              onClick={() => setGender(option)}
+              className={gender === opt ? "active" : ""}
+              onClick={() => setGender(opt)}
             >
-              {option.charAt(0).toUpperCase() + option.slice(1)}
+              {opt.charAt(0).toUpperCase()+opt.slice(1)}
             </button>
           ))}
         </div>
       </div>
 
       <div className="encuesta-group">
-        <label>Birthday</label>
+        <label>Fecha de nacimiento</label>
         <input
           type="date"
-          value={birthday}
-          onChange={e => setBirthday(e.target.value)}
+          value={Nacimiento}
+          onChange={e => setNacimiento(e.target.value)}
+          required
         />
       </div>
 
       <div className="encuesta-group">
-        <label>Height</label>
-        <div className="input-with-unit">
-          <input
-            type="number"
-            placeholder="cm"
-            value={height}
-            onChange={e => setHeight(e.target.value)}
-          />
-          <span>cm</span>
-        </div>
+        <label>Altura (cm)</label>
+        <input
+          type="number"
+          placeholder="cm"
+          value={height}
+          onChange={e => setHeight(e.target.value)}
+          required
+        />
       </div>
+
       <div className="encuesta-group">
-        <label>Weight</label>
-        <div className="input-with-unit">
-          <input
-            type="number"
-            placeholder="kg"
-            value={weight}
-            onChange={e => setWeight(e.target.value)}
-          />
-          <span>kg</span>
-        </div>
+        <label>Peso (kg)</label>
+        <input
+          type="number"
+          placeholder="kg"
+          value={weight}
+          onChange={e => setWeight(e.target.value)}
+          required
+        />
       </div>
-      <button type="submit" className="encuesta-next">
-        NEXT
+
+      <button type="submit" disabled={saving} className="encuesta-next">
+        {saving ? "Guardando…" : "Siguiente"}
       </button>
     </form>
   );
 }
-export default FormularioEncuesta;

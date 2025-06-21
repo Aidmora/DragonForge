@@ -4,21 +4,18 @@
     flex-direction: column;
   }
   
-  /* Cada campo con margen */
   .encuesta-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
   }
-  
-  /* Etiquetas verdes */
+
   .encuesta-group label {
     color: #0f0;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
   }
-  
-  /* Toggle de género */
+
   .gender-toggle {
     display: flex;
     border: 1px solid #666;
@@ -42,7 +39,6 @@
     background: #333;
   }
   
-  /* Inputs de texto/fecha */
   .encuesta-form input[type="date"],
   .encuesta-form input[type="number"] {
     width: 100%;
@@ -59,8 +55,6 @@
     border-color: #0f0;
     box-shadow: 0 0 6px rgba(0,255,0,0.5);
   }
-  
-  /* Inputs con unidad (cm, kg) */
   .input-with-unit {
     position: relative;
   }
@@ -72,7 +66,6 @@
     color: #ccc;
   }
   
-  /* Botón NEXT */
   .encuesta-next{
     --main-color: rgb(46, 213, 115);
     --main-bg-color: rgba(46, 213, 116, 0.36);
@@ -122,8 +115,6 @@
   .encuesta-next:active{
     filter: hue-rotate(250deg);
   }
-  
-  /* Responsive */
   @media (max-width: 480px) {
     .encuesta-next {
       font-size: 0.9rem;

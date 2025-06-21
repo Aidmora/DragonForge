@@ -1,8 +1,6 @@
 import React from 'react'
 import MenuBar from '../components/MenuBar'
 import Footer from "../components/Footer";
-import EjerciciosList     from '../components/EjerciciosList';
-import EjercicioForm from '../components/EjercicioForm';
 import './css/MisRutinas.css';
 import Spinner from '../components/Spinner';
 function MisRutinasPage() {
