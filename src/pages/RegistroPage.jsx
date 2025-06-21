@@ -10,12 +10,11 @@ export default function RegistroPage() {
   const [contrasenia, setContrasenia] = useState('');
   const [telefono, setTelefono]       = useState('');
   const [error, setError]             = useState(null);
+  const [submitting, setSubmitting]   = useState(false);  
   const { register }                  = useContext(AuthContext);
 
   const handleSubmit = async e => {
     e.preventDefault();
-
-    // ---- VALIDACIONES ----
     if (!email.includes('@')) {
       setError('El correo debe contener un “@”');
       return;
@@ -25,6 +24,7 @@ export default function RegistroPage() {
       return;
     }
     setError(null);
+    setSubmitting(true); 
     try {
       await register({
         nombre,
@@ -36,6 +36,7 @@ export default function RegistroPage() {
       });
     } catch (err) {
       setError(err.message);
+      
     }
   };
 
@@ -52,10 +53,12 @@ export default function RegistroPage() {
             error={error}
             setNombre={setNombre}
             setEmail={setEmail}
+            setSubmitting={submitting}
             setContrasenia={setContrasenia}
             setTelefono={setTelefono}
             handleSubmit={handleSubmit}
           />
+
         </div>
         <div className="registro-image-wrapper">
           <img src={fitnessImage} alt="Fitness" className="registro-image" />

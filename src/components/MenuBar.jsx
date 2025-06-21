@@ -12,41 +12,42 @@ export default function MenuBar() {
   return (
     <header className="site-header">
       <nav className="site-nav">
-        {/* Logo */}
         <img
           src={logo}
           alt="Dragon Forge"
           className="logo"
-          onClick={() => navigate("/workouts")}
+          onClick={() => navigate("/ejercicios")}
         />
 
         {/* Links siempre centrados */}
         <ul className="barra-nav ">
-          <li>
-            <NavLink to="/workouts" className={({ isActive }) => isActive ? "active" : ""}>
-              Rutinas
-            </NavLink>
-          </li>
 
           {user && (
             <>
-              <li>
-                <NavLink to="/exercises" className={({ isActive }) => isActive ? "active" : ""}>
-                  Ejercicios
+            <li>
+                <NavLink to="/misEjercicios" className={({ isActive }) => isActive ? "active" : ""}>
+                  Mis Ejercicios
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/misRutinas" className={({ isActive }) => isActive ? "active" : ""}>
-                  Mis rutinas
+                <NavLink to="/misFavoritos" className={({ isActive }) => isActive ? "active" : ""}>
+                  Mis Favoritos
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/settings" className={({ isActive }) => isActive ? "active" : ""}>
-                  Configuración
+                <NavLink to="/rutinas" className={({ isActive }) => isActive ? "active" : ""}>
+                  RUTINAS
                 </NavLink>
               </li>
+              
+              
             </>
           )}
+          <li>
+            <NavLink to="/ejercicios" className={({ isActive }) => isActive ? "active" : ""}>
+              EJERCICIOS
+            </NavLink>
+          </li>
         </ul>
 
         <div className="spacer" />

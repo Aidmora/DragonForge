@@ -7,7 +7,7 @@ function EncuestaPage() {
     <div className="encuesta-container">
       <div className="encuesta-card">
         <header className="encuesta-header">
-          <h1 className="encuesta-title">About You</h1>
+          <h1 className="encuesta-title">Sobre ti</h1>
         </header>
         <section className="encuesta-body">
           <FormularioEncuesta />
