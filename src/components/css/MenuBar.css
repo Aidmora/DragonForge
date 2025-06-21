@@ -80,8 +80,7 @@
 }
 
 .barra-nav a:hover,
-.barra-nav .active,
-.user-button:hover {
+.barra-nav .active {
   background: var(--color-primary);
   color: var(--color-text-inv);
   box-shadow: 0 0 8px var(--color-primary);
@@ -89,12 +88,66 @@
   border-radius: 4px;
 }
 
-.right-nav a:hover,
-.right-nav .user-button:hover {
+.right-nav a:hover {
   background: var(--color-bg-alt) ;
-  box-shadow: 0 0 8px red ;
+  box-shadow: 0 0 10px red ;
   color:white;
+  transform: scale(1.0);
 }
+.right-nav .user-button:hover{
+  background: var(--color-bg-alt) ;
+  transform: scale(1.07);
+}
+
+.user-dropdown {
+  position: relative;
+}
+
+.user-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-primary);
+}
+
+.user-name {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+
+.chevron {
+  margin-left: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  transition: transform 0.2s;
+}
+
+.user-button:hover .chevron {
+  transform: scale(1.1);
+}
+
+.dropdown .menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--color-bg-alt);
+  border: 1px solid red;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  list-style: none;
+  min-width: 160px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,1);
+  z-index: 1001;
+}
+
 
 @keyframes fadeMenu {
   0%   { box-shadow: 0 3px 10px rgba(248, 11, 11, 0.5); }

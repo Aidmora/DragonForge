@@ -1,13 +1,25 @@
-import React, { useContext, useState } from "react";
+// src/components/MenuBar.jsx
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { NavLink, useNavigate }       from "react-router-dom";
 import { AuthContext }                from "../contexts/AuthContext";
 import "./css/MenuBar.css";
 import logo                           from "../assets/DragonForge.png";
+import { Navbar, Nav, Image, Dropdown } from "react-bootstrap";
 
 export default function MenuBar() {
   const { user, logout } = useContext(AuthContext);
   const navigate         = useNavigate();
-  const [hovering, setHovering] = useState(false);
+  const [open, setOpen]  = useState(false);
+  const dropdownRef      = useRef(null);
+  useEffect(() => {
+    const handler = e => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
 
   return (
     <header className="site-header">
@@ -18,15 +30,22 @@ export default function MenuBar() {
           className="logo"
           onClick={() => navigate("/ejercicios")}
         />
-
-        {/* Links siempre centrados */}
-        <ul className="barra-nav ">
-
+        <ul className="barra-nav central-nav">
+          <li>
+            <NavLink to="/ejercicios" className={({ isActive }) => isActive ? "active" : ""}>
+              EJERCICIOS
+            </NavLink>
+          </li>
           {user && (
             <>
-            <li>
+              <li>
                 <NavLink to="/misEjercicios" className={({ isActive }) => isActive ? "active" : ""}>
                   Mis Ejercicios
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/rutinas" className={({ isActive }) => isActive ? "active" : ""}>
+                  Rutinas
                 </NavLink>
               </li>
               <li>
@@ -34,20 +53,8 @@ export default function MenuBar() {
                   Mis Favoritos
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/rutinas" className={({ isActive }) => isActive ? "active" : ""}>
-                  RUTINAS
-                </NavLink>
-              </li>
-              
-              
             </>
           )}
-          <li>
-            <NavLink to="/ejercicios" className={({ isActive }) => isActive ? "active" : ""}>
-              EJERCICIOS
-            </NavLink>
-          </li>
         </ul>
 
         <div className="spacer" />
@@ -66,19 +73,34 @@ export default function MenuBar() {
               </li>
             </>
           ) : (
-            <li>
-              <button
-                className="user-button"
-                onMouseEnter={() => setHovering(true)}
-                onMouseLeave={() => setHovering(false)}
-                onClick={logout}
-              >
-                {hovering ? "Cerrar sesión" : user.nombre}
-              </button>
-            </li>
+             <Dropdown alignRight>
+            <Dropdown.Toggle
+              as="div"
+              className="d-flex align-items-center user-button"
+            >
+              <Image
+                src={user.foto_perfil_url}
+                roundedCircle
+                className="avatar"
+              />
+              <span className="user-name">{user.nombre}</span>
+            </Dropdown.Toggle>
+            <Dropdown.Menu className="menu">
+              <Dropdown.Item className="menu-item" onClick={() => navigate("/profile")}>
+                Cuenta
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => navigate("/settings")}>
+                Configuración
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={logout}>
+                Cerrar sesión
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
           )}
         </ul>
       </nav>
     </header>
-  );
+);
 }
