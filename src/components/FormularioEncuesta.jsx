@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useNavigate }           from "react-router-dom";
 import { AuthContext }           from "../contexts/AuthContext";
-import { updatePhenotipo}         from "../services/usuarios";
+import { updatePhenotipo, getUsuarioPorId}         from "../services/usuarios";
 import "./css/FormularioEncuesta.css";
 
 export default function FormularioEncuesta() {
-  const { user } = useContext(AuthContext);
+  const { user, setUser} = useContext(AuthContext);
   const navigate = useNavigate();
   const [gender,   setGender]   = useState(user?.sexo        || "male");
   const [Nacimiento, setNacimiento] = useState(user?.fecha_nacimiento || "");
@@ -26,6 +26,8 @@ const handleSubmit = async e => {
         altura: Number(height),
         peso: Number(weight)
       });
+      const full = await getUsuarioPorId(user.id)
+      setUser(full)
       navigate("/ejercicios");
     } catch (err) {
       setError(err.message);

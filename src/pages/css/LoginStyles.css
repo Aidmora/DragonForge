@@ -19,7 +19,7 @@ html, body {
   .login-content {
     display: flex;
     width: auto;
-    max-width: 1000px;
+    max-width: 1100px;
     height:auto;
     background: #111;              
     border: 2px solid #0f0;       
