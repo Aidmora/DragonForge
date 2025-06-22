@@ -84,11 +84,46 @@ Se encarga de ejecutar el linter (`npm run lint`) tras cada *push* en un runner 
 > ![Ejecución exitosa del Lint](./images/Workflow-lint2.png)
 > ![Ejecución exitosa del Lint](./images/Workflow-lint.png)
 ---
+### 1.2 `test.yml`
 
+```yaml
+name: Node Test
+on: [push]
+
+jobs:
+  lint:
+    runs-on: [self-hosted]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Linter
+        run: npm test
+```
+
+**Propósito:**
+Este workflow ejecuta los tests (`npm test`) tras cada *push* en un runner `self-hosted`.
+
+1. Clona el repositorio.
+2. Prepara Node.js.
+3. Instala dependencias.
+4. Corre los tests.
+
+> **Ejecución del workflow**
+> ![Ejecución exitosa del Test](./images/Workflow-test.png)
 ## 2. Pruebas Unitarias y de Integración
 
 > **Ejecución de todos los tests**
-> *(Aquí insertar una única captura de pantalla con la salida completa de `npm test` mostrando 0 fallos)*
+> ![Ejecución exitosa de los tests unitarios y de integración](./images/Test_Ejecucion.png)
 
 ---
 
@@ -762,15 +797,15 @@ Construye la aplicación React en un contenedor Node y luego sirve el contenido 
 
 ---
 
-## 4. Créditos y Contacto
+## 4. Desarrolladores e Información
 
-**Autor:**  
-Ariel (ariel@dragonforge.com)
+**Desarrolladores:**  
+Ariel (ariel.mora@epn.edu.ec)
+Fernando (fernando.nagua@epn.edu.ec)
 
 **Repositorio:**  
-[github.com/DragonForge/dragon-forge-client](https://github.com/DragonForge/dragon-forge-client)
+[github.com/Aidmora/DragonForge](https://github.com/Aidmora/DragonForge)
 
----
+**Docker Hub:**  
+[hub.docker.com/r/aidmora/dragonforge-client](https://hub.docker.com/r/aidmora/dragonforge-client)
 
-> _Documentación generada para el equipo de desarrollo de DragonForge.  
-> Para sugerencias, mejoras o reportes de errores, abre un issue en el repositorio o contacta al autor._
