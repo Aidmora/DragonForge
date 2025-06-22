@@ -21,18 +21,22 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const login = async ({ email, contrasenia }) => {
-    setLoading(true);
-    const u = await loginUser({ email, contrasenia });
-    setUser(u);
-    localStorage.setItem("userId", u.id);
-    setLoading(false);
-    if (!u.info_fenotipica_completa) {
-      navigate("/encuesta");
-    } else {
-      navigate("/ejercicios");
-    }
-  };
+const login = async ({ email, contrasenia }) => {
+  setLoading(true);
+  // 1) Autenticar devuelve solo credenciales mínimas
+  const { id } = await loginUser({ email, contrasenia });
+  // 2) Volver a cargar el usuario completo con todos sus arrays
+  const fullUser = await getUsuarioPorId(id);
+  setUser(fullUser);
+  localStorage.setItem("userId", id);
+  setLoading(false);
+  if (!fullUser.info_fenotipica_completa) {
+    navigate("/encuesta");
+  } else {
+    navigate("/ejercicios");
+  }
+};
+
 
   const register = async (datos) => {
     setLoading(true);

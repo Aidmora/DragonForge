@@ -28,9 +28,9 @@ export const loginUser = (credentials) =>
     body: JSON.stringify(credentials),
   });
 
-export const getUsuarios = () => request("/usuarios/");
+export const getUsuarios = () => request("/usuarios");
 export const getUsuarioPorId = usuario_id =>
-  request(`/usuarios/${usuario_id}/`);         
+  request(`/usuarios/${usuario_id}`);         
 
 export const updateUsuario = (usuario_id, datos) =>
   request(`/usuarios/${usuario_id}`, {
