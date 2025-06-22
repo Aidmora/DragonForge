@@ -97,7 +97,6 @@
 .right-nav .user-button:hover{
   background: var(--color-bg-alt) ;
   transform: scale(1.07);
-  box-shadow: 0 0 10px red ;
 }
 
 .user-dropdown {
@@ -132,7 +131,6 @@
   top: calc(100% + 0.5rem);
   right: 0;
   background: var(--color-bg-alt);
-  border: 1px solid red;
   border-radius: 4px;
   padding: 0.5rem 0;
   list-style: none;

@@ -1,0 +1,81 @@
+.actualizar-label {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  padding-bottom: 0.5rem;
+}
+
+.actualizar-input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--color-bg-alt);
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: white;
+}
+
+.actualizar-input:focus {
+  outline: none;
+}
+
+.actualizar-input:hover {
+  transform: scale(1);
+  box-shadow: 0px 0px 3px rgba(0, 255, 0, 0.7);
+}
+
+.actualizar-error {
+  color: #ff4444;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.actualizar-button {
+  --main-color: rgb(46, 213, 115);
+  --main-bg-color: rgba(46, 213, 116, 0.36);
+  --pattern-color: rgba(46, 213, 116, 0.073);
+  filter: hue-rotate(0deg);
+
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.6rem;
+  background: radial-gradient(circle,
+      var(--main-bg-color) 0%,
+      rgba(0, 0, 0, 0) 95%),
+    linear-gradient(var(--pattern-color) 1px, transparent 1px),
+    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+  background-size:
+    cover,
+    15px 15px,
+    15px 15px;
+  background-position:
+    center center,
+    center center,
+    center center;
+  border-image: radial-gradient(circle,
+      var(--main-color) 0%,
+      rgba(0, 0, 0, 0) 100%) 1;
+  border-width: 3px 0 2px 0;
+  color: var(--main-color);
+  padding: 1rem 3rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 100%;
+  transition: background-size 0.4s ease-in-out;
+}
+
+.actualizar-button:hover {
+  background-size:
+    cover,
+    10px 10px,
+    10px 10px;
+}
+
+.actualizar-button:active {
+  filter: hue-rotate(250deg);
+}
+
+

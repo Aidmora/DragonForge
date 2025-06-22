@@ -1,45 +1,75 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import MenuBar from "../components/MenuBar";
-import Spinner from "../components/Spinner";
 import Footer from "../components/Footer";
 import "../pages/css/Configuracion.css";
 import { AuthContext } from "../contexts/AuthContext";
 import ConfiguracionForm from "../components/ConfiguracionForm";
 import BotonAtras from "../components/BotonAtras";
+import logo from "../assets/DragonForge.png";
+import { updateUsuario } from "../services/usuarios";
+import Spinner from "../components/Spinner";
+
 function ConfiguracionPage() {
-  const { user } = useContext(AuthContext);
-  const [nombre, setNombre] = useState("");
-  const [email, setEmail] = useState("");
-  const [contrasenia, setContrasenia] = useState("");
-  const [telefono, setTelefono] = useState("");
+  const { user, setUser } = useContext(AuthContext);
   const [error, setError] = useState(null);
   const [update, setUpdate] = useState(false);
-  const nav = useNavigate();
   const [seccion, setSeccion] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+
   const menuItems = [
     {
       key: "perfil",
       label: "Editar perfil",
       onClick: () => setSeccion("perfil"),
-      component: <ConfiguracionForm></ConfiguracionForm>,
+      component: (
+        <ConfiguracionForm
+          user={user}
+          error={error}
+          submitting={update}
+          onSubmit={async (datos) => {
+            const payload = {
+              nombre: datos.nombre,
+              email: datos.email,
+              telefono: datos.telefono,
+              contrasenia: datos.contrasenia,
+              peso: datos.peso,
+              altura: datos.altura,
+              sexo: datos.gender, 
+              estado_registro: user.estado_registro,
+              info_fenotipica_completa: user.info_fenotipica_completa,
+            };
+            setError(null);
+            setUpdate(true);
+            try {
+              await updateUsuario(user.id, payload);
+              setUser((u) => ({ ...u, ...payload }));
+              setShowPopup(true);
+            } catch (err) {
+              setError(err.message);
+            }finally{
+              setUpdate(false);
+            }
+          }}
+        />
+      ),
     },
     {
       key: "pref",
       label: "Preferencias",
       onClick: () => setSeccion("pref"),
-      //   component: <PreferenciaEntrenamiento />
+      component: <Spinner message="Continuamos implementando..." className="Spinner"></Spinner>
     },
     {
       key: "notif",
       label: "Notificaciones",
       onClick: () => setSeccion("notif"),
-      //   component: <Notificaciones />
+      component: <Spinner message="Continuamos implementando..." className="Spinner"></Spinner>
     },
   ];
-
   const activo = menuItems.find((item) => item.key === seccion);
   const titulo = activo ? activo.label : "Configuración";
+
   return (
     <div className="page-container">
       <MenuBar />
@@ -52,7 +82,6 @@ function ConfiguracionPage() {
         <div className="config-content">
           {!activo && (
             <div className="row gx-6">
-              <div className="items">
                 <ul className="config-list">
                   <h3>Cuenta</h3>
                   {menuItems.map(({ key, icon, label, onClick }) => (
@@ -63,7 +92,6 @@ function ConfiguracionPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
             </div>
           )}
           <div className="config-panel">
@@ -81,6 +109,15 @@ function ConfiguracionPage() {
           <Footer />
         </div>
       </main>
+      {showPopup && (
+        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+          <div className="popup">
+            <img src={logo} alt="Dragon Forge" className="popup-logo" />
+            <p>¡Perfil actualizado con éxito!</p>
+            <button onClick={() => setShowPopup(false)}>Cerrar</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
