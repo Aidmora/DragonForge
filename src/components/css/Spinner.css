@@ -27,7 +27,7 @@
   position: relative;
   z-index: 1;
   font-family: var(--ff-main);
-  color: var(--color-bg-alt);
+  color: var(--color-primary);
   font-weight: 500;
   font-size: 1rem;
   text-transform: uppercase;
