@@ -1,85 +1,95 @@
-html, body {
-    margin: 0; padding: 0;
-    width: 100%; height: 100%;
-    background: #000;   
-    color:#fff;
-    font-family: sans-serif;
-  }
-  
-  .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;      
-    background: #111; 
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: sans-serif;
+}
 
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: #111;
+}
+
+.login-content {
+  display: flex;
+  width: auto;
+  height: auto;
+  background: #111;
+  border: 2px solid #0f0;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.login-image-wrapper {
+  flex: 2;
+  position: relative;
+  background: #222;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image-title {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #0f0;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+  font-size: 1.5rem;
+}
+
+.login-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-position: center;
+}
+
+.login-form-wrapper {
+  flex: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-title {
+  margin-bottom: 1rem;
+  color: #0f0;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+  font-size: 1.5rem;
+}
+
+.barraCarga {
+  position: fixed;
+  top: 80%;
+}
+
+@media (max-width: 768px) {
   .login-content {
-    display: flex;
-    width: auto;
-    max-width: 1100px;
-    height:auto;
-    background: #111;              
-    border: 2px solid #0f0;       
-    box-shadow: 0 0 20px rgba(0,255,0,0.4);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .login-image-wrapper {
-    flex: 2;
-    position: relative;
-    background: #222;
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  .image-title {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    color: #0f0;
-    text-shadow: 0 0 5px rgba(0,255,0,0.7);
-    font-size: 1.5rem;
-  }
-  .login-image {
-    width: 80%; height: 70%;
-    background-size: cover;
-
-    background-position: center;
-  }
-  .login-form-wrapper {
-    flex: 2;
-    padding: 2rem;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
-  .form-title {
-    margin-bottom: 1rem;
-    color: #0f0;
-    text-shadow: 0 0 5px rgba(0,255,0,0.7);
-    font-size: 1.5rem;
+
+  .login-image-wrapper,
+  .login-form-wrapper {
+    flex: unset;
+    width: 100%;
   }
-  .barraCarga{
-    position: fixed;
-    top:80%;
+
+  .login-image-wrapper {
+    height: 200px;
   }
-  @media (max-width: 768px) {
-    .login-content {
-      flex-direction: column;
-    }
-    .login-image-wrapper,
-    .login-form-wrapper {
-      flex: unset;
-      width: 100%;
-    }
-    .login-image-wrapper {
-      height: 200px;
-    }
-  }
-  
+}
