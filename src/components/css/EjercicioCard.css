@@ -1,68 +1,107 @@
 .card {
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 2rem;
-  width: 50%;
-  margin: auto;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.card-content {
-  position: relative;
-  z-index: 2;
-  height: 400px;
-  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: inherit; 
-  background: rgba(0,0,0,0.6); 
+  flex-direction: row;          
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 3px 4px 3px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
 }
-
-.nombreEjercicio {
-  font-family: var(--ff-main);
-  color: wheat;
-  font-weight: 700;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  margin: 0;
-  opacity: 1;
-  transition: opacity .3s ease;
-}
-
-.ejerciciosCarac {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--color-bg-alt);
-  text-align: left;
-  opacity: 0;
-  transition: opacity .3s ease;
-  pointer-events: none;
-  z-index: 2;
-}
-
 .card:hover {
   transform: translateY(-5px);
-  background: var(--color-bg-alt);
-  box-shadow: 0 30px 30px var(--color-bg-alt);
-
 }
 
-.card:hover,
-.ejerciciosCarac {
+.card-avatar {
+  flex: 0 0 120px;           
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  height: fit-content;
+  z-index: 2;
+}
+.card-avatar img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--color-primary);
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  z-index: 2;                   
+  color: var(--ff-main);
+}
+
+.card-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--ff-main);
+  font-size: 1.25rem;
   color: white;
 }
 
-.card:hover .nombreEjercicio {
-  opacity: 0;
+.compact-info {
+  animation: fadeIn .3s ease;
 }
 
-.card:hover .ejerciciosCarac {
-  opacity: 1;
-  pointer-events: auto;
+.card-details {
+  animation: fadeIn .3s ease;
+}
+
+/* acciones al final */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-detalles {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-detalles:hover {
+  background: var(--color-primary);
+  color: var(--color-text-inv);
+}
+
+.icon-heart {
+  font-size: 2rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.icon-heart:hover {
+  color: red;
+}
+
+.card.expanded .card-title,
+.card.expanded .compact-info,
+.card.expanded .icon-heart {
+  display: none;
+}
+
+.card.expanded .card-content {
+  justify-content: flex-start; 
+}
+
+.card.expanded .card-details {
+  display: block;
+}
+.card.expanded .card-actions {
+  justify-content: flex-start;
+}
+/* animación simple */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to   { opacity: 1 }
 }

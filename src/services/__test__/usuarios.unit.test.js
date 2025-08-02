@@ -42,7 +42,11 @@ describe('Usuarios service (unit)', () => {
     })
 
     it('lanza error si la respuesta no es ok', async () => {
-      global.fetch.mockResolvedValueOnce({ ok: false, statusText: 'Bad Request' })
+      global.fetch.mockResolvedValueOnce({
+        ok: false,
+        statusText: 'Bad Request',
+        text: () => Promise.resolve('Bad Request')
+      })
       await expect(registerUser({})).rejects.toThrow('Bad Request')
     })
   })
@@ -67,8 +71,13 @@ describe('Usuarios service (unit)', () => {
     })
 
     it('lanza error con credenciales inválidas', async () => {
-      global.fetch.mockResolvedValueOnce({ ok: false, statusText: 'Unauthorized' })
-      await expect(loginUser({ email: 'e', password: 'bad' })).rejects.toThrow('Unauthorized')
+      global.fetch.mockResolvedValueOnce({
+        ok: false,
+        statusText: 'Unauthorized',
+        text: () => Promise.resolve('Unauthorized')
+      })
+      await expect(loginUser({ email: 'e', password: 'bad' }))
+        .rejects.toThrow('Unauthorized')
     })
   })
 
@@ -81,12 +90,19 @@ describe('Usuarios service (unit)', () => {
       })
 
       const result = await getUsuarios()
-      expect(global.fetch).toHaveBeenCalledWith('/api/usuarios', expect.any(Object))
+      expect(global.fetch).toHaveBeenCalledWith(
+        '/api/usuarios',
+        expect.any(Object)
+      )
       expect(result).toEqual(mockList)
     })
 
     it('lanza error si falla la petición', async () => {
-      global.fetch.mockResolvedValueOnce({ ok: false, statusText: 'Error' })
+      global.fetch.mockResolvedValueOnce({
+        ok: false,
+        statusText: 'Error',
+        text: () => Promise.resolve('Error')
+      })
       await expect(getUsuarios()).rejects.toThrow('Error')
     })
   })
@@ -100,12 +116,19 @@ describe('Usuarios service (unit)', () => {
       })
 
       const result = await getUsuarioPorId(5)
-      expect(global.fetch).toHaveBeenCalledWith('/api/usuarios/5', expect.any(Object))
+      expect(global.fetch).toHaveBeenCalledWith(
+        '/api/usuarios/5',
+        expect.any(Object)
+      )
       expect(result).toEqual(mockUser)
     })
 
     it('lanza error si no existe', async () => {
-      global.fetch.mockResolvedValueOnce({ ok: false, statusText: 'Not Found' })
+      global.fetch.mockResolvedValueOnce({
+        ok: false,
+        statusText: 'Not Found',
+        text: () => Promise.resolve('Not Found')
+      })
       await expect(getUsuarioPorId(999)).rejects.toThrow('Not Found')
     })
   })

@@ -1,56 +1,52 @@
-:root {
-  --header-h: 100px;
-  --nav-h:    60px;
-  --bg-dark:  #141414;
-  --bg-alt:   #1f1f1f;
-  --text:     #E0E0E0;
-  --ff-main: 'Montserrat', sans-serif;
-  --font-body:     'Share Tech Mono', monospace;
-}
-
 .page-container {
-  min-height:100vw;
+  min-height: 100vw;
 }
 
 .content-wrapper.container {
   padding-left: 0;
-  padding-right: 0 ;
+  padding-right: 0;
   max-width: 100%;
 }
+
 .content-wrapper .row {
   margin-left: 0;
   margin-right: 0;
 }
 
-.content-wrapper .row > [class^="col-"] {
+.content-wrapper .row>[class^="col-"] {
   padding-left: 0;
   padding-right: 0;
 }
+
 .site-main {
-  position:absolute;
+  position: absolute;
   background: var(--bg-dark);
   top: 190px;
 }
-.content-wrapper .row.com{
+
+.content-wrapper .row.com {
   background-color: #11141e;
   min-height: 100px;
   align-items: center;
   padding-left: 35%;
   padding-right: 15%;
 }
-.content-wrapper .row.comD .colm1{
+
+.content-wrapper .row.comD .colm1 {
   padding-top: 10%;
   background-color: white;
   min-height: 1000px;
 }
-.forgeP{
+
+.forgeP {
   font-size: 1.5rem;
   margin-left: 5%;
   color: #11141e;
   font-weight: 600;
   font-family: var(--ff-main);
 }
-.forgeTi{
+
+.forgeTi {
   font-family: var(--ff-main);
   color: #5EFF00;
   margin-left: 5%;
@@ -60,65 +56,74 @@
   font-size: 3rem;
   text-transform: uppercase;
   text-align: justify;
-}.forgeDes{
-    font-family: var(--ff-main);
-    text-transform: uppercase;
-    color:#1f1f1f;
-    font-weight:500;
-    margin-bottom: 0.5rem;
-    font-size: 1.0rem;
-    line-height: 1.8;
-    margin-left: 5%;
-    margin-right: 5%;
-    text-align: justify;
 }
 
+.forgeDes {
+  font-family: var(--ff-main);
+  text-transform: uppercase;
+  color: #1f1f1f;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 1.0rem;
+  line-height: 1.8;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: justify;
+}
 
-.content-wrapper .row.com .info{
+.content-wrapper .row.com .info {
   display: flex;
 }
-.barra-busqueda{
+
+.barra-busqueda {
   margin-top: 2rem;
   margin-left: 30%;
 }
+
 .site-main {
-  background:#f3eae8;
+  background: beige;
   top: 190px;
 }
-.contenidoEjercicios{
-  background-color: white;
+
+*/ .contenidoEjercicios {
+  background-color: beige;
 }
-.listadoEjercicios{
-  padding-top:2%;
+
+.listadoEjercicios {
+  padding-top: 2%;
   padding-bottom: 2%;
   display: inline;
 }
-.contenidoEjercicios .row.gx-6 h2{
+
+.contenidoEjercicios .row.gx-6 h2 {
   font-family: var(--ff-main);
   color: var(--color-bg-alt);
   padding-top: 20px;
   margin-bottom: 0.5rem;
   font-weight: 700;
-  font-size: 2rem; 
+  font-size: 2rem;
   text-transform: uppercase;
   text-align: center;
 }
-.contenidoEjercicios .col-6{
+
+.contenidoEjercicios .col-6 {
   padding-top: 40px;
 }
-.contenidoEjercicios .col-6 img{
+
+.contenidoEjercicios .col-6 img {
   width: 80%;
   height: auto;
   margin-left: 10%;
 
 }
-.contenidoEjercicios .col-6 .formulario{
+
+.contenidoEjercicios .col-6 .formulario {
   padding-top: 30px;
   width: 100%;
-  margin:auto;
+  margin: auto;
 }
-.footer{
+
+.footer {
   width: 100vw;
   height: fit-content;
 }
-

@@ -1,21 +1,35 @@
-// src/components/EjerciciosList.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import EjercicioCard from './EjercicioCard';
 import { getEjercicios } from '../services/ejercicios';
 import Spinner from './Spinner';
+import { AuthContext } from '../contexts/AuthContext';
 import './css/EjerciciosList.css';
 
 export default function EjerciciosList() {
   const [ejercicios, setEjercicios] = useState([]);
   const [loading, setLoading]       = useState(true);
   const [error, setError]           = useState(null);
+  const { user } = useContext(AuthContext);
 
-  useEffect(() => {
+useEffect(() => {
+    let mounted = true;
     getEjercicios()
-      .then(data => setEjercicios(data))
-      .catch(err => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
+      .then(data => {
+        if (!mounted) return;
+        const creados = new Set(user?.rutinas|| []);
+        const filtrados = data.filter(e => !creados.has(e.id));
+        setEjercicios(filtrados);
+      })
+      .catch(err => {
+        if (!mounted) return;
+        setError(err.message);
+      })
+      .finally(() => {
+        if (!mounted) return;
+        setLoading(false);
+      });
+    return () => { mounted = false };
+  }, [user]);
 
   if (loading) 
     return <Spinner message="Cargando ejercicios..." className="Spinner" />;

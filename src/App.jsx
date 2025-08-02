@@ -1,7 +1,7 @@
 // src/App.jsx
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Protected from './components/Protected';
-
+import './App.css';
 import LoginPage      from './pages/LoginPage';
 import RegistroPage   from './pages/RegistroPage';
 import EjerciciosPage    from './pages/EjerciciosPage';
