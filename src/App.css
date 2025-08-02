@@ -1,5 +1,8 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 #root {
-  width: 100vw;
+  width: 100%;  
   margin: 0 auto;
   --bg-dark: #141414;
   --bg-alt: #1f1f1f;

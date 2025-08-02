@@ -24,8 +24,6 @@ html, body {
   border-radius: 8px;
   overflow: hidden;
 }
-
-/* aquí intercambiamos el orden: form primero, luego imagen */
 .registro-form-wrapper {
   flex: 2;
   padding: 2rem;

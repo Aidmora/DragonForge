@@ -1,4 +1,3 @@
-// src/components/EjerciciosList.jsx
 import React, { useState, useEffect, useContext } from "react";
 import EjercicioCard from "../components/EjercicioCard";
 import { getEjercicios } from "../services/ejercicios";
