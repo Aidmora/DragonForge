@@ -11,7 +11,7 @@ export default function MisEjercicios() {
   const { user } = useContext(AuthContext);
   const [ejercicios, setEjercicios] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [setError] = useState(null);
 
   useEffect(() => {
     let mounted = true;

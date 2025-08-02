@@ -9,7 +9,7 @@ import { Navbar, Nav, Image, Dropdown } from "react-bootstrap";
 export default function MenuBar() {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
+  const [setOpen] = useState(false);
   const dropdownRef = useRef(null);
   useEffect(() => {
     const handler = (e) => {

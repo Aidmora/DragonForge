@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import MenuBar from "../components/MenuBar";
 import Footer from "../components/Footer";
 import "../pages/css/Configuracion.css";

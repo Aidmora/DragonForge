@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent} from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 // Mocks de assets y estilos
 jest.mock('../../assets/DragonForge.png', () => null)
