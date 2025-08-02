@@ -1,56 +1,28 @@
 pipeline {
   agent any
 
-  tools {
-    nodejs 'NodeJS-22'
-  }
+  tools { nodejs 'NodeJS-22' }
 
   environment {
     IMAGE_NAME = "aidmora/dragonforge:${env.BUILD_NUMBER}"
-    REPO_URL   = "https://github.com/Aidmora/DragonForge.git"
   }
 
   stages {
-    stage('Checkout') {
-      steps {
-        withCredentials([string(credentialsId: 'github-pat', variable: 'GITHUB_TOKEN')]) {
-          sh """
-            git clone -b main https://\$GITHUB_TOKEN@github.com/Aidmora/DragonForge.git .
-          """
-        }
-      }
-    }
-
     stage('Install dependencies') {
-      steps {
-        sh 'npm ci'
-      }
+      steps { sh 'npm ci' }
     }
-
     stage('Lint') {
-      steps {
-        sh 'npm run lint'
-      }
+      steps { sh 'npm run lint' }
     }
-
     stage('Test') {
-      steps {
-        sh 'npm test'
-      }
+      steps { sh 'npm test' }
     }
-
     stage('Build') {
-      steps {
-        sh 'npm run build'
-      }
+      steps { sh 'npm run build' }
     }
-
     stage('Build Docker image') {
-      steps {
-        sh "docker build -t ${env.IMAGE_NAME} ."
-      }
+      steps { sh "docker build -t ${env.IMAGE_NAME} ." }
     }
-
     stage('Push Docker image') {
       steps {
         withCredentials([usernamePassword(
@@ -66,14 +38,8 @@ pipeline {
   }
 
   post {
-    always {
-      archiveArtifacts artifacts: 'dist/**', fingerprint: true
-    }
-    success {
-      echo " Build y push completados correctamente."
-    }
-    failure {
-      echo "Falló el pipeline. Revisa la consola para detalles."
-    }
+    always   { archiveArtifacts artifacts: 'dist/**', fingerprint: true }
+    success  { echo "Build y push completados correctamente." }
+    failure  { echo "Falló el pipeline. Revisa la consola para detalles." }
   }
 }
