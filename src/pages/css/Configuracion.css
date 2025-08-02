@@ -1,27 +1,14 @@
-:root {
-  --bg-dark:  #141414;
-  --bg-alt:   #1f1f1f;
-  --text:     #E0E0E0;
-  --ff-main: 'Montserrat', sans-serif;
-  --font-body:     'Share Tech Mono', monospace;
-}
-
 .page-container {
   min-height:100vw;
 }
 
-.contenidoMisRutinas {
-  padding-left: 0;
-  padding-right: 0 ;
-  max-width: 100%;
-  height: 100vh;
-}
 .footer{
   width: 100vw;
   height: fit-content;
 }
 .conf{
-    width: 100vh;
+    width: 100%;
+    height: 100vh;
     box-shadow: 0 0 2px var(--color-bg-alt);
     align-content: center;
 }

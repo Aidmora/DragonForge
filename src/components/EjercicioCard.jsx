@@ -1,42 +1,65 @@
 // src/components/EjercicioCard.jsx
-import React from "react";
+import React, { useState } from "react";
+import { FaHeart } from "react-icons/fa";
 import "./css/EjercicioCard.css";
 
-function EjercicioCard({ ejercicio }) {
+export default function EjercicioCard({ ejercicio }) {
+  const [expanded, setExpanded] = useState(false);
   const grupos = Array.isArray(ejercicio.grupo_muscular)
     ? ejercicio.grupo_muscular
     : [];
-  const equipas = Array.isArray(ejercicio.equipamiento)
+  const equipos = Array.isArray(ejercicio.equipamiento)
     ? ejercicio.equipamiento
     : [];
-  const imagenEjercicio = ejercicio.imagen_url;
+
   return (
     <div
-      className="card"
-      style={{
-        backgroundImage: imagenEjercicio ? `url(${imagenEjercicio})` : "none",
-      }}>
-      <div className="card-content">
-        <div className="nombreEjercicio">
-          <h3>{ejercicio.nombre}</h3>
+      className={`card ${expanded ? "expanded" : ""}`}
+      style={{ background: "beige" }}
+    >
+      <div className="row align-items-center">
+        <div className="col-4">
+          <div className="card-avatar">
+            <img src={ejercicio.imagen_url} alt={ejercicio.nombre} />
+          </div>
         </div>
-        <div className="ejerciciosCarac">
-          <p>
-            <strong>Dificultad:</strong> {ejercicio.dificultad}
-          </p>
-          <p>
-            <strong>Grupo muscular:</strong> {grupos.join(", ")}
-          </p>
-          <p>
-            <strong>Equipamiento:</strong> {equipas.join(", ")}
-          </p>
-          <p>
-            <strong>Instrucciones:</strong> {ejercicio.instrucciones}
-          </p>
+        <div className="col-8">
+          <div className="card-content">
+            <h3 className="card-title">{ejercicio.nombre}</h3>
+            {!expanded && (
+              <div className="compact-info">
+                <p>Dificultad: {ejercicio.dificultad}</p>
+                <p>Grupo Muscular: {grupos.join(", ")}</p>
+              </div>
+            )}
+            {expanded && (
+              <div className="card-details">
+                <p>
+                  <strong>Dificultad:</strong> {ejercicio.dificultad}
+                </p>
+                <p>
+                  <strong>Grupo muscular:</strong> {grupos.join(", ")}
+                </p>
+                <p>
+                  <strong>Equipamiento:</strong> {equipos.join(", ")}
+                </p>
+                <p>
+                  <strong>Instrucciones:</strong> {ejercicio.instrucciones}
+                </p>
+              </div>
+            )}
+            <div className="card-actions">
+              <button
+                className="btn-detalles"
+                onClick={() => setExpanded((e) => !e)}
+              >
+                {expanded ? "Ocultar" : "Detalles"}
+              </button>
+              <FaHeart className="icon-heart" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default EjercicioCard;

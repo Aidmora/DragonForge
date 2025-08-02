@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import { crearEjercicio } from "../services/ejercicios";
+import React, { useState, useContext } from "react";
+import { crearEjercicio }     from "../services/ejercicios";
+import { updateUsuario, getUsuarioPorId}      from "../services/usuarios";
+import { AuthContext }        from "../contexts/AuthContext";
 import "./css/NuevoEjercicioForm.css";
-import EjercicioDificultad from "./EjercicioDificultad";
+import EjercicioDificultad    from "./EjercicioDificultad";
 export default function EjercicioForm({ onCreated }) {
+  const { user, setUser } = useContext(AuthContext);
   const [form, setForm] = useState({
     nombre: "",
     dificultad: "",
@@ -17,19 +20,24 @@ export default function EjercicioForm({ onCreated }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
     setError(null);
+
     try {
-      const payload = {
+      const nuevo = await crearEjercicio({
         nombre: form.nombre,
         dificultad: form.dificultad,
         grupo_muscular: form.grupo_muscular.split(",").map((s) => s.trim()),
         equipamiento: form.equipamiento.split(",").map((s) => s.trim()),
         instrucciones: form.instrucciones,
-      };
-      await crearEjercicio(payload);
+      });
+      const actuales = user.rutinas || [];
+      const nuevosCreados = [...actuales, nuevo.id];
+      await updateUsuario(user.id, { rutinas: nuevosCreados });
+      const refreshed = await getUsuarioPorId(user.id);
+      setUser(refreshed);
       setForm({
         nombre: "",
         dificultad: "",
@@ -38,6 +46,7 @@ export default function EjercicioForm({ onCreated }) {
         instrucciones: "",
       });
       onCreated();
+
     } catch (err) {
       setError(err.message);
     } finally {

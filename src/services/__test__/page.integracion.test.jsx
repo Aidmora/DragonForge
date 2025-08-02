@@ -2,27 +2,37 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-
-// Mocks
+// Mocks de assets y estilos
 jest.mock('../../assets/DragonForge.png', () => null)
-jest.mock('../../contexts/AuthContext', () => {
-  const React = require('react')
-  return { AuthContext: React.createContext() }
-})
+jest.mock('../../pages/css/LoginStyles.css', () => {})
+jest.mock('../../pages/css/RegistroStyles.css', () => {})
+// Mock servicios/usuarios para evitar ESM
+jest.mock('../../services/usuarios', () => ({
+  registerUser:    jest.fn(),
+  loginUser:       jest.fn(),
+  getUsuarios:     jest.fn(),
+  getUsuarioPorId: jest.fn(),
+  updateUsuario:   jest.fn(),
+  updatePhenotipo: jest.fn(),
+}))
 
+import { AuthContext } from '../../contexts/AuthContext'
 import Protected from '../../components/Protected'
 import LoginPage from '../../pages/LoginPage'
 import RegistroPage from '../../pages/RegistroPage'
-import { AuthContext } from '../../contexts/AuthContext'
+import FormularioLogin from '../../components/FormularioLogin'
+import FormularioRegistro from '../../components/FormularioRegistro'
 
-describe('Protected (integracion)', () => {
-  it('muestra spinner cuando loading=true', () => {
+// Integration tests para páginas y componentes protegidos
+
+describe('Protected (integration)', () => {
+  it('muestra solo el mensaje de carga', () => {
     render(
       <AuthContext.Provider value={{ user: null, loading: true }}>
         <Protected><div>OK</div></Protected>
       </AuthContext.Provider>
     )
-    expect(screen.getByRole('status')).toHaveTextContent('Cargando…')
+    expect(screen.getByText('Cargando...')).toBeInTheDocument()
   })
 
   it('redirige a /login si no hay usuario', () => {
@@ -46,7 +56,7 @@ describe('Protected (integracion)', () => {
   })
 })
 
-describe('LoginPage (integracion)', () => {
+describe('LoginPage (integration)', () => {
   it('muestra mensaje de error si login lanza', async () => {
     const login = jest.fn(() => Promise.reject(new Error('Fail login')))
     render(
@@ -56,14 +66,13 @@ describe('LoginPage (integracion)', () => {
         </MemoryRouter>
       </AuthContext.Provider>
     )
-
-    fireEvent.change(screen.getByLabelText(/Email/), { target: { value: 'e' } })
-    fireEvent.change(screen.getByLabelText(/Contraseña/), { target: { value: 'p' } })
+    fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: 'e' } })
+    fireEvent.change(screen.getByLabelText(/Contraseña/i), { target: { value: 'p' } })
     fireEvent.click(screen.getByRole('button', { name: /Continue/i }))
   })
 })
 
-describe('RegistroPage (integracion)', () => {
+describe('RegistroPage (integration)', () => {
   it('valida email sin @ y muestra error', () => {
     const register = jest.fn()
     render(
@@ -73,11 +82,9 @@ describe('RegistroPage (integracion)', () => {
         </MemoryRouter>
       </AuthContext.Provider>
     )
-
-    fireEvent.change(screen.getByLabelText(/Email/), { target: { value: 'no-at-sign' } })
-    fireEvent.change(screen.getByLabelText(/Contraseña/), { target: { value: '12345678' } })
+    fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: 'no-at-sign' } })
+    fireEvent.change(screen.getByLabelText(/Contraseña/i), { target: { value: '12345678' } })
     fireEvent.click(screen.getByRole('button', { name: /Registrarse/i }))
-
     expect(screen.getByText('El correo debe contener un “@”')).toBeInTheDocument()
     expect(register).not.toHaveBeenCalled()
   })
@@ -91,11 +98,9 @@ describe('RegistroPage (integracion)', () => {
         </MemoryRouter>
       </AuthContext.Provider>
     )
-
-    fireEvent.change(screen.getByLabelText(/^Email$/), { target: { value: 'a@b' } })
-    fireEvent.change(screen.getByLabelText(/Contraseña/), { target: { value: 'short' } })
+    fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: 'a@b' } })
+    fireEvent.change(screen.getByLabelText(/Contraseña/i), { target: { value: 'short' } })
     fireEvent.click(screen.getByRole('button', { name: /Registrarse/i }))
-
     expect(screen.getByText('La contraseña debe tener al menos 8 caracteres')).toBeInTheDocument()
     expect(register).not.toHaveBeenCalled()
   })
